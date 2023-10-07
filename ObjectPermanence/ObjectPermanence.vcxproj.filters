@@ -1186,11 +1186,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ObjectPermanence.rc">
-      <Filter>Nabi\Libraries</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
     <FxCompile Include="Nabi\Rendering\Shaders\PixelShader2D.hlsl">
       <Filter>Nabi\Rendering\Shaders</Filter>
     </FxCompile>
@@ -1214,5 +1209,8 @@
     <Image Include="Nabi\Miscellaneous\icon.ico">
       <Filter>Nabi\Miscellaneous</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ObjectPermanence.rc" />
   </ItemGroup>
 </Project>
