@@ -20,6 +20,16 @@ static_assert(LIB_LEVEL >= LIB_LEVEL_ENGINE);
 	):
 
 	It is better for my time and sanity right now to just have everything in one project. Thanks Brandon for trying to help.
-
 	LIB_LEVEL was going to be a per project define to make sure we don't include any, eg, game code in engine and create a dependency.
+
+	The steps I followed to set up the solution where:
+		- Create a new repo and clone it
+		- Copy/paste the Nabi code folder and solution file in (to keep all of Nabi's project settings)
+			- Though now you can probs just copy/paste this project's code/solution and delete all the 'Game' code.
+			  This will save you having to add Nabi\ infront of $(ProjectDir) in additional include directories,
+			  chaning the shader output directories and data paths (eg Tests/ -> Nabi/Tests ->)
+		- You then may or may not have to remove the code files and add them back in using VS.
+		- Follow the steps described here https://stackoverflow.com/a/22356663/8890269 to rename the solution and project files.
+		
+		- There is almost certainly better ways of doing this, but its what worked for me.
 */

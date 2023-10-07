@@ -712,9 +712,6 @@
     <ClInclude Include="Nabi\Core\Inc\WorldConstants.h">
       <Filter>Nabi\Core\Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Nabi\Core\EngineCore.h">
-      <Filter>Nabi\Core\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="Nabi\ECS\Inc\CoreComponents\BaseComponents\UIElementComponentBase.h">
       <Filter>Nabi\ECS\Inc\CoreComponents\BaseComponents</Filter>
     </ClInclude>
@@ -1127,6 +1124,9 @@
       <Filter>Nabi\Tests</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Nabi\Core\EngineCore.h">
+      <Filter>Nabi\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
