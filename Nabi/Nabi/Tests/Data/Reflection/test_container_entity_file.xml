@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entity_group id="TestGroup">
+  <entity id="TestEntity">
+    <component id="MockComponentWithContainers">
+      <property id="IntVector" value="2, 4, 8" />
+      <property id="IntMap" value="0, 9 | 8, 7" />
+      <!-- 
+        Containers with custom types are not currently supported. See StringConverter.h for an explanation and solution
+        <property id="CustomTypeVector" value="10, false | 11, true" /> 
+      -->
+    </component>
+  </entity>
+</entity_group>

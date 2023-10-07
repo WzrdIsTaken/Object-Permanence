@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- A 'library entity' is an entity which had a component which has library types on it. In this case, DirectX types -->
+
+<entity_group id="TestGroup">
+  <entity id="TestEntity">
+    <component id="MockComponentWithDirectXTypes">
+      <property id="Float2" value="10, 10" />
+      <property id="Float3" value="450.0, 31.0, 4" />
+      <property id="Int2" value="-7, 4" />
+      <property id="Int3" value="1, 1, 1" />
+    </component>
+  </entity>
+</entity_group>

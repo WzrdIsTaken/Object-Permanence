@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entity_group id="TestTemplateGroup">
+  <entity_template id="TestEntityTemplate">
+    <component id="MockComponent">
+      <property id="IntType" value="27" />
+      <property id="FloatType" value="1.0" />
+    </component>
+  </entity_template>
+
+  <entity_template id="TestEntityTemplate2" template="TestEntityTemplate">
+    <property component="MockComponent" id="StringType" value="inheritance" />
+  </entity_template>
+  
+  <entity id="TestEntity1" template="TestEntityTemplate"> 
+  </entity>
+
+  <entity id="TestEntity2" template="TestEntityTemplate">
+    <property component="MockComponent" id="FloatType" value="2.0" />
+  </entity>
+
+  <entity id="TestEntity3" template="TestEntityTemplate2">
+  </entity>
+
+  <entity id="TestEntity4" template="TestEntityTemplate2">
+    <property component="MockComponent" id="FloatType" value="3.0" />
+  </entity>
+</entity_group>

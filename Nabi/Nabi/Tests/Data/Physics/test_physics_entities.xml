@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entity_group id="PhysicsEntities">
+  <entity_template id="PhysicsEntityTemplate">
+    <component id="TransformComponent">
+      <property id="Scale" value="0.25f, 0.25f, 0.25f" />
+    </component>
+    <component id="RigidbodyComponent" />
+    <component id="ColliderComponent" />
+
+    <component id="ModelResourceComponent">
+      <property id="MeshPath" value="PrimativeCube=1x1x1" />
+      <property id="TexturePath" value="Nabi/Tests/Data/Rendering/skybox_daybreak.png" />
+      <property id="PixelShaderPath" value="Nabi/Rendering/Shaders/PixelShader3D.cso" />
+      <property id="VertexShaderPath" value="Nabi/Rendering/Shaders/VertexShader3D.cso" />
+    </component>
+    <component id="DrawPerspectiveTagComponent" />
+  </entity_template>
+
+  <entity id="Collider" template="PhysicsEntityTemplate">
+    <property component="TransformComponent" id="Position" value="1, -1, 0" />
+    <property component="RigidbodyComponent" id="GravityScale" value="0" />
+    <property component="ColliderComponent" id="Mask" value="TestPhysicsCollisionMasks::Object" />
+    <property component="ColliderComponent" id="ColliderType" value="Cube" />
+    <property component="ColliderComponent" id="InteractionType" value="Static" /> <!-- Dynamic / Static (both work) -->
+    <property component="ColliderComponent" id="ColliderDimensions" value="0.625, 0.625, 0.625" /> <!-- set x to like '10' to test static as well-->
+    <property component="ModelResourceComponent" id="TexturePath" value="Nabi/Tests/Data/Rendering/ball_texture.png" />
+  </entity>
+  
+  <entity id="HighCollider" template="PhysicsEntityTemplate">
+    <property component="TransformComponent" id="Position" value="1, 1, 0" />
+    <property component="RigidbodyComponent" id="GravityScale" value="1" />
+    <property component="ColliderComponent" id="Mask" value="TestPhysicsCollisionMasks::Object" /> <!-- TestPhysicsCollisionMasks::Player-->
+    <property component="ColliderComponent" id="ColliderType" value="Cube" />
+    <property component="ColliderComponent" id="InteractionType" value="Dynamic" />
+    <property component="ColliderComponent" id="ColliderDimensions" value="0.625, 0.625, 0.625" />
+    <property component="ModelResourceComponent" id="TexturePath" value="Nabi/Tests/Data/Rendering/ball_texture.png" />
+  </entity>
+</entity_group>

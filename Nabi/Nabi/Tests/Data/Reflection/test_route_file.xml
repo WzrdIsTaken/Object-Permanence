@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<route id="TestCoreData">
+  <!-- Systems -->
+  <file id="Systems" value="Nabi/Tests/Data/Reflection/test_system_file.xml" />
+
+  <!-- Entities -->
+  <file id="TestStuff" value="Nabi/Tests/Data/Reflection/test_entity_file.xml" />
+</route>

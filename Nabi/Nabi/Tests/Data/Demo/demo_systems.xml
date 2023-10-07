@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<system_group id="DemoSystems">
+  <!-- Remember in a real project to consider system update order. It could be important! 
+       Eg - Input->Update->Render cycle
+       Here I have just done it alphabetically... -->
+  
+  <!-- Core Systems -->
+  <system id="AudioSystem" />
+  <system id="CameraSystem" />
+  <system id="CollisionSystem" />
+  <system id="InputSystem" />
+  <system id="LightingSystem" />
+  <system id="PhysicsSystem" />
+  <system id="RenderSystem" />
+  <system id="UISystem" />
+  
+  <!-- Demo (game) Systems -->
+  <system id="AsteroidSystem" />
+  <system id="PlayerSystem" />
+</system_group>

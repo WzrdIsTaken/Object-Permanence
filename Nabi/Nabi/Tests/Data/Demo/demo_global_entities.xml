@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entity_group id="DemoGlobalEntities">
+  <!-- World -->
+  
+  <entity id="Sun">
+    <component id="TransformComponent">
+      <property id="Position" value="0, 100, 0" />
+    </component>
+    <component id="DirectionalLightComponent">
+      <property id="Direction" value="-10, 0, -20" />
+      <property id="Colour" value="255, 255, 255" />
+    </component>
+  </entity>
+
+  <entity id="Player">
+    <component id="TransformComponent">
+      <property id="Position" value="0, 0, 0" />
+    </component>
+    <component id="RigidbodyComponent">
+      <property id="AngularDrag" value="100" />
+      <property id="GravityScale" value="0" />
+    </component>
+    <component id="ColliderComponent">
+      <property id="ColliderDimensions" value="10, 10, 10" />
+      <property id="Mask" value="CollisionMask::Player" />
+    </component>
+    <component id="PlayerComponent">
+      <property id="Speed" value="100" />
+      <property id="RotateSpeed" value="100" />
+    </component>
+  </entity>
+
+  <entity id="Collider">
+    <component id="TransformComponent">
+      <property id="Position" value="0, 10, 0" />
+    </component>
+    <component id="RigidbodyComponent">
+      <property id="GravityScale" value="0" />
+    </component>
+    <component id="ColliderComponent">
+      <property id="ColliderDimensions" value="10, 10, 10" />
+      <property id="Mask" value="CollisionMask::Object" />
+    </component>
+
+    <component id="ModelResourceComponent">
+      <property id="MeshPath" value="PrimativeCube=5x5x5" /> <!-- Nabi/Tests/Data/Rendering/ball_model.obj -->
+      <property id="TexturePath" value="Nabi/Tests/Data/Rendering/ball_texture.png" />
+      <property id="PixelShaderPath" value="Nabi/Rendering/Shaders/PixelShader3D.cso" />
+      <property id="VertexShaderPath" value="Nabi/Rendering/Shaders/VertexShader3D.cso" />
+    </component>
+    <component id="DrawPerspectiveTagComponent" />
+  </entity>
+
+  <!-- UI -->
+  <!-- For more examples of ui, see test_ui_entities.xml -->
+
+  <entity id="UIScene" delay_creation="true">
+    <component id="UISceneComponent">
+      <property id="SceneName" value="DemoScene" />
+      <property id="SceneEntities" value="Button" />
+    </component>
+  </entity>
+  
+  <entity id="Button">
+    <component id="TransformComponent">
+      <property id="Position" value="-1, 0, 0" />
+    </component>
+
+    <compoent id="ButtonComponent">
+      <property id="Scene" value="DemoScene" />
+      <property id="Action" value="ButtonResponse" />
+      <property id="InputType" value="Mouse" />
+      <property id="ActivationKey" value="Mouse_LeftButton" />
+      <property id="AltInputType" value="Keyboard" />
+      <property id="AltActivationKey" value="Key_M" />  
+    </compoent>
+
+    <component id="SpriteResourceComponent">
+      <property id="ImagePath" value="Nabi/Tests/Data/Rendering/sprite.png" />
+      <property id="PixelShaderPath" value="Nabi/Rendering/Shaders/PixelShader2D.cso" />
+      <property id="VertexShaderPath" value="Nabi/Rendering/Shaders/VertexShader2D.cso" />
+    </component>
+    <component id="DrawOrthographicTagComponent" />
+  </entity>
+
+  <entity id="Text">
+    <component id="TransformComponent">
+      <property id="Position" value="-1, 0, 0" />
+      <property id="Scale" value="0.2, 0.2, 0.2" />
+    </component>
+
+    <component id="TextResourceComponent">
+      <property id="FontPath" value="Nabi/Tests/Data/Rendering/font.png" />
+      <property id="PixelShaderPath" value="Nabi/Rendering/Shaders/PixelShader2D.cso" />
+      <property id="VertexShaderPath" value="Nabi/Rendering/Shaders/VertexShader2D.cso" />
+      <property id="Content" value="Hello" />
+      <property id="CharacterSpace" value="0.38, 0" />
+      <property id="AsciiShift" value="32" />
+      <property id="TextureAtlas" value="15, 8" />
+    </component>
+    <component id="DrawOrthographicTagComponent" />
+  </entity>
+</entity_group>

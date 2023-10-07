@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entity_group id="DemoEntities">
+  <entity id="AsteroidOne" template="AsteroidEntityTemplate">
+    <property component="TransformComponent" id="Position" value="10, 0, 10" />
+    <property component="AsteroidComponent" id="SpinDirection" value="1, 0, 0" />
+  </entity>
+
+  <entity id="AsteroidTwo" template="AsteroidEntityTemplate">
+    <property component="TransformComponent" id="Position" value="10, 0, 20" />
+    <property component="AsteroidComponent" id="SpinDirection" value="0, 1, 0" />
+  </entity>
+
+  <entity id="AsteroidThree" template="AsteroidEntityTemplate">
+    <property component="TransformComponent" id="Position" value="10, 0, 30" />
+    <property component="AsteroidComponent" id="SpinDirection" value="0, 0, 1" />
+  </entity>
+</entity_group>

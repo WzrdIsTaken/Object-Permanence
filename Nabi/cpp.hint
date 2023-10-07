@@ -1,0 +1,24 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+
+// I will add things to this file as I remember to click the vs prompt! :D
+//	- At least thats what I did when making Nabi... from now on I'll try and add them all..!
+
+// --- Game Macros ---
+
+// [first game macro here!]
+
+// --- Nabi Macros ---
+
+#define NABI_SUCCESS
+#define NABI_FAIL
+
+#define NABI_NOEXCEPT
+#define DELETE_COPY_MOVE_CONSTRUCTORS(type) type(type&) = delete; type(type&&) = delete; type(type const&) = delete; type(type const&&) = delete;
+
+#define TSINGLETON_INSTANCE(_class)
+
+#define REFLECT_CONTAINER
+#define REFLECTED_MAP
+#define REFLECTED_VECTOR

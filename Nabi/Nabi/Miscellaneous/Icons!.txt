@@ -1,0 +1,4 @@
+- If you want a different icon, just replace this one
+- The icon can also be toggled on / off via WindowSettings
+
+Here is the full icon tutorial: https://www.youtube.com/watch?v=QYGLXhulvVQ&list=PLqCJpWy5Fohd3S7ICFXwUomYW0Wv67pDD&t=1098s
