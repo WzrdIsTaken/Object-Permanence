@@ -1186,7 +1186,7 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Nabi.rc">
+    <ResourceCompile Include="ObjectPermanence.rc">
       <Filter>Nabi\Libraries</Filter>
     </ResourceCompile>
   </ItemGroup>

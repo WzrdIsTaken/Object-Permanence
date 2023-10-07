@@ -24,6 +24,7 @@
     <ProjectGuid>{9f367c16-1c4e-4441-aa12-1bf90b2bd3f8}</ProjectGuid>
     <RootNamespace>Nabi</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ObjectPermanence</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -464,7 +465,7 @@
     <Xml Include="Nabi\Tests\Data\Reflection\test_system_file.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Nabi.rc" />
+    <ResourceCompile Include="ObjectPermanence.rc" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Nabi\Rendering\Shaders\PixelShader2D.hlsl">
