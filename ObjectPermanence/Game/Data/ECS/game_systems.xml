@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<system_group id="GameSystems">
+  <!-- Core Systems -->
+  <system id="AudioSystem" />
+  <system id="CameraSystem" />
+  <system id="CollisionSystem" />
+  <system id="InputSystem" />
+  <system id="LightingSystem" />
+  <system id="PhysicsSystem" />
+  <system id="RenderSystem" />
+  <system id="UISystem" />
+  
+  <!-- Game Systems -->
+</system_group>

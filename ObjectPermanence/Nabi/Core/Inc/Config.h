@@ -4,4 +4,4 @@
 // The LIB_LEVEL macro is defined in configuration properties.
 
 #define LIB_LEVEL_ENGINE 0
-#define LIB_LEVEL_GAME   1
+#define LIB_LEVEL_GAME   0 // See why I had to do this in EngineCore.h.. ): This value should be "1"

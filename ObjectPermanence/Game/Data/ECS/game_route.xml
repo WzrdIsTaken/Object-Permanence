@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<route id="GameRoute">
+  <!-- Systems -->
+  <file id="Systems" value="Game/Data/ECS/game_systems.xml" />
+
+  <!-- Entities -->
+  <!--
+    Something like this...
+    <file id="SingletonEntities" value ="Nabi/Tests/Data/Demo/demo_singleton_entities.xml" />
+    <file id="TemplateEntities" value ="Nabi/Tests/Data/Demo/demo_template_entities.xml" />
+    <file id="GlobalEntities" value ="Nabi/Tests/Data/Demo/demo_global_entities.xml" />
+    <file id="Entities" value ="Nabi/Tests/Data/Demo/demo_entities.xml" /> #
+  -->
+</route>

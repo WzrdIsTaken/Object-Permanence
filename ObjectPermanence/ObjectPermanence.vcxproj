@@ -101,7 +101,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Game;$(ProjectDir)Game\Core\Inc;$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -123,7 +123,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Game;$(ProjectDir)Game\Core\Inc;$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -144,7 +144,7 @@
       <ConformanceMode>true</ConformanceMode>
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Game;$(ProjectDir)Game\Core\Inc;$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -163,7 +163,7 @@
       <ConformanceMode>true</ConformanceMode>
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Game;$(ProjectDir)Game\Core\Inc;$(ProjectDir)Nabi;$(ProjectDir)Nabi\Audio\Inc;$(ProjectDir)Nabi\Core;$(ProjectDir)Nabi\Core\Inc;$(ProjectDir)Nabi\ECS\Inc;$(ProjectDir)Nabi\Input\Inc;$(ProjectDir)Nabi\Libraries\Inc\entt;$(ProjectDir)Nabi\Libraries\Inc\OBJLoader;$(ProjectDir)Nabi\Libraries\Inc\pugixml;$(ProjectDir)Nabi\Libraries\Inc\thread_pool;$(ProjectDir)Nabi\Libraries\Inc\WICTextureLoader;$(ProjectDir)Nabi\Memory\Inc;$(ProjectDir)Nabi\Patterns\Inc;$(ProjectDir)Nabi\Physics\Inc;$(ProjectDir)Nabi\Reflection\Inc;$(ProjectDir)Nabi\Rendering\Inc;$(ProjectDir)Nabi\Resource\Inc;$(ProjectDir)Nabi\Tests;$(ProjectDir)Nabi\Tests\Inc;$(ProjectDir)Nabi\Threading\Inc;$(ProjectDir)Nabi\Utils\Inc</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -175,6 +175,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Core\Src\Game.cpp" />
+    <ClCompile Include="Game\Core\Src\GameAssetBank.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Nabi\Audio\Src\AudioCommand.cpp" />
     <ClCompile Include="Nabi\Audio\Src\AudioEffect.cpp" />
@@ -282,6 +284,14 @@
     <ClCompile Include="Nabi\Utils\Src\UtilClasses\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Core\Inc\Game.h" />
+    <ClInclude Include="Game\Core\Inc\GameAssetBank.h" />
+    <ClInclude Include="Game\Core\Inc\Identifiers\AssetTypes.h" />
+    <ClInclude Include="Game\Core\Inc\Identifiers\AudioIDs.h" />
+    <ClInclude Include="Game\Core\Inc\Identifiers\CollisionMasks.h" />
+    <ClInclude Include="Game\Core\Inc\Types\FloatingPointTypes.h" />
+    <ClInclude Include="Game\Core\Inc\Types\IntegerTypes.h" />
+    <ClInclude Include="Game\GameCore.h" />
     <ClInclude Include="Nabi\Audio\Inc\AudioCommand.h" />
     <ClInclude Include="Nabi\Audio\Inc\AudioEffect.h" />
     <ClInclude Include="Nabi\Audio\Inc\AudioIncludes.h" />
@@ -443,10 +453,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+    <None Include="Game\Core\Inl\Identifiers\AssetTypes.inl" />
     <None Include="Nabi\Rendering\Shaders\Common.hlsli" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Game\Data\ECS\game_route.xml" />
+    <Xml Include="Game\Data\ECS\game_systems.xml" />
     <Xml Include="Nabi\Tests\Data\Audio\test_audio_entities.xml" />
     <Xml Include="Nabi\Tests\Data\Demo\demo_entities.xml" />
     <Xml Include="Nabi\Tests\Data\Demo\demo_global_entities.xml" />
@@ -531,6 +544,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Nabi\Miscellaneous\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

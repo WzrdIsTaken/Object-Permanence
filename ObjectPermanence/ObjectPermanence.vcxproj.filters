@@ -338,6 +338,36 @@
     <Filter Include="Game">
       <UniqueIdentifier>{2e87287f-dbd1-41a3-bb61-6cf38ca2c563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Core">
+      <UniqueIdentifier>{53089026-a882-4f7b-98e3-098245a3f364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Data">
+      <UniqueIdentifier>{b9ed2db5-2833-472d-8558-a245ded8cbe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ECS">
+      <UniqueIdentifier>{1bed0539-42a5-4990-9653-6c7286bd39c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Inc">
+      <UniqueIdentifier>{8cde525f-0500-4fea-ae89-de50624ac122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Src">
+      <UniqueIdentifier>{2033647b-51d6-445e-bccd-c8ee463cc758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Inc\Types">
+      <UniqueIdentifier>{9a3c2943-f755-4d24-8f67-d22feb799ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Inc\Identifiers">
+      <UniqueIdentifier>{b5f6e59d-d305-4627-ba03-9f760b816e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Inl">
+      <UniqueIdentifier>{665a1e0e-1e19-49d2-9c29-07ce80b9f1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core\Inl\Identifiers">
+      <UniqueIdentifier>{38793562-71bb-4076-b1fd-a917d57cfef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Data\ECS">
+      <UniqueIdentifier>{c527da2f-e370-46d0-a000-5ffb6736b1fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Nabi\Audio\Src\AudioCommand.cpp">
@@ -653,6 +683,12 @@
       <Filter>Nabi\Tests\Src\MockObjects</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Game\Core\Src\Game.cpp">
+      <Filter>Game\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Core\Src\GameAssetBank.cpp">
+      <Filter>Game\Core\Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Nabi\Audio\Inc\AudioCommand.h">
@@ -1127,6 +1163,30 @@
     <ClInclude Include="Nabi\Core\EngineCore.h">
       <Filter>Nabi\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Game\GameCore.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Game.h">
+      <Filter>Game\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Types\FloatingPointTypes.h">
+      <Filter>Game\Core\Inc\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Types\IntegerTypes.h">
+      <Filter>Game\Core\Inc\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\GameAssetBank.h">
+      <Filter>Game\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Identifiers\AssetTypes.h">
+      <Filter>Game\Core\Inc\Identifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Identifiers\CollisionMasks.h">
+      <Filter>Game\Core\Inc\Identifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Inc\Identifiers\AudioIDs.h">
+      <Filter>Game\Core\Inc\Identifiers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1134,6 +1194,9 @@
       <Filter>Nabi\Rendering\Shaders</Filter>
     </None>
     <None Include="cpp.hint" />
+    <None Include="Game\Core\Inl\Identifiers\AssetTypes.inl">
+      <Filter>Game\Core\Inl\Identifiers</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Nabi\Tests\Data\Audio\test_audio_entities.xml">
@@ -1184,6 +1247,12 @@
     <Xml Include="Nabi\Tests\Data\Reflection\test_system_file.xml">
       <Filter>Nabi\Tests\Data\Reflection</Filter>
     </Xml>
+    <Xml Include="Game\Data\ECS\game_route.xml">
+      <Filter>Game\Data\ECS</Filter>
+    </Xml>
+    <Xml Include="Game\Data\ECS\game_systems.xml">
+      <Filter>Game\Data\ECS</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Nabi\Rendering\Shaders\PixelShader2D.hlsl">
@@ -1212,5 +1281,8 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ObjectPermanence.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todo.txt" />
   </ItemGroup>
 </Project>

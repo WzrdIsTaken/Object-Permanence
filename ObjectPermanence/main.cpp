@@ -14,13 +14,29 @@
 	These are the header guards, protecting this project and keeping the lands of Nabi safe.
 */
 
+// Nabi Headers
 #include "Main.h"
 
-int CALLBACK wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nShowCmd)
-{
-    // Remember to turn off USE_CORE_FUNCTIONALITY_MULTITHREADING while we dont have anything rendering etc
-    // (we should really cap the ticks / fps :p...)
+// Game Headers
+#include "Game.h"
+#include "Typedefs\IntegerTypes.h"
 
-    // Your game here! glhf
-    return NABI_SUCCESS;
+s32 CALLBACK wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ s32 nShowCmd)
+{
+    nabi::NabiCoreSettings nabiCoreSettings = nabi::c_NabiCoreDefaultSettings;
+    nabiCoreSettings.m_DataSettings.m_RouteDocument = "Game\\Data\\ECS\\game_route.xml";
+    nabiCoreSettings.m_DataSettings.m_NabiCoreParseDocuments = nabi::DataSettings::NabiCoreParseMode::All;
+
+    nabi::NabiMainParams const nabiParams =
+    {
+        nabiCoreSettings
+    };
+
+    nabi::WinMainParams const winParams =
+    {
+        hInstance, hPrevInstance, lpCmdLine, nShowCmd
+    };
+
+    s32 const result = nabi::Main<core::Game>(nabiParams, winParams);
+    return result;
 }
