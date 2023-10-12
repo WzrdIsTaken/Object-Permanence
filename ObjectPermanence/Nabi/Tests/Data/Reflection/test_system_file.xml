@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<system_group id="TestSystems">
-  <system id="MockSystem">
-    <property id="MockSystemData" value="5" />
-  </system>
-</system_group>
