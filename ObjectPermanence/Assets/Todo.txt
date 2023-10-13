@@ -1,0 +1,23 @@
+Notes:
+- mention unity was the right tool for the job in writeup/portfolio
+- can defo talk about this dynamic stuff in writeup / video
+	- have to use dyanmic because component doesnt have enabled and then different components implmenet it ???
+		- eg see box collider vs transform
+		- see the description i left in permanencecomponent
+	- component is not a dynamic object , so have to use reflection
+
+Resources:
+* Assets
+- Blockout textures: https://kenney.itch.io/
+
+Tasks:
+* Long Term:
+- 
+
+* General:
+- singleton constructor called twice?
+
+Archive:
+- reorganise code files (not very well organised atm)
+- add way to enable/disables objects
+- organise this file
