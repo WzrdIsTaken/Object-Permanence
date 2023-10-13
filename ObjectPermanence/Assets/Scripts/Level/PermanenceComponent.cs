@@ -58,17 +58,18 @@ namespace ObjectPermanence
 
         private void Start()
         {
-            InitValidComponentsOnGameObject();
-            InitRigidbody();
-            InitPermanenceObject();
-            UpdateVisibilityState(_visibilityState);
-
+            RefreshState();
             PermanenceObjectCreated?.Invoke(_permanenceObject);
         }
 
         private void OnDestroy()
         {
             PermanenceObjectDestroyed?.Invoke(_permanenceObject);
+        }
+
+        private void OnValidate()
+        {
+            RefreshState();
         }
 
         public void UpdateVisibilityState(VisibilityState visibilityState)
@@ -95,6 +96,17 @@ namespace ObjectPermanence
                 DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level,
                     $"The gameobject \"{gameObject.name}\" is now {(visible ? "visible" : "not visible")} to the observer camera");
             }
+        }
+
+        private void RefreshState()
+        {
+            _visibilityState = VisibilityState.NotSet;
+            _components.Clear();
+
+            InitValidComponentsOnGameObject();
+            InitRigidbody();
+            InitPermanenceObject();
+            UpdateVisibilityState(_visibilityState);
         }
 
         private void InitValidComponentsOnGameObject()
@@ -134,7 +146,7 @@ namespace ObjectPermanence
 
         private void ToggleComponents(bool toggleState)
         {
-            if (_rigidbody) // Rigidbody does not have an enabled property but we need to handle it
+            if (_rigidbody) // Rigidbody does not have an enabled property but we need to handle it or objects will just fall through the world :p
             {
                 _rigidbody.isKinematic = !toggleState;
                 _rigidbody.detectCollisions = toggleState;
