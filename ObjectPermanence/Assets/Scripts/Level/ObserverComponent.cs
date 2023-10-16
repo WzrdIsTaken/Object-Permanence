@@ -58,7 +58,7 @@ namespace ObjectPermanence
                 bool visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObjectBounds);
 
                 permanenceObjectBounds.Expand(_boundsInsideCheckExpansionAmount);
-                bool inside = permanenceObject.RendererComponent.bounds.Contains(_observerCamera.transform.position);
+                bool inside = permanenceObjectBounds.Contains(_observerCamera.transform.position);
 
                 var visiblilityState = (visible && !inside) ? PermanenceComponent.VisibilityState.Visible : PermanenceComponent.VisibilityState.NotVisible;
                 permanenceObject.PermanenceComponent.UpdateVisibilityState(visiblilityState);
