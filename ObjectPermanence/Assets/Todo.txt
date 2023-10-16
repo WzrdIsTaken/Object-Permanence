@@ -15,6 +15,7 @@ Tasks:
 - 
 
 * General:
+- player movement probs
 - singleton constructor called twice?
 
 Archive:

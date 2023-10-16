@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 
 namespace ObjectPermanence
@@ -15,9 +14,7 @@ namespace ObjectPermanence
      *    seem to be an OnComponentAdded/Removed event I can hook into (which is how I would handle this), so I will
      *    need to write my own extension method and override AddComponent/RemoveComponent. However, right now I don't
      *    think this issue will be a problem in this project.
-     *  - Not all components having a enabled property, and it doesn't seem custom classes can be casted to DynamicObject
-     *    (I think...), which is why I have to do this reflection stuff. I think a better solution would be to write an 
-     *    extension property for the components which don't have "enabled", but it doesn't look like thats a feature.
+     *      - But, if we need to fix it a hacky way is just to call InitValidComponentsOnGameObject in UpdateVisibilityState.
      */
     public class PermanenceComponent : MonoBehaviour
     {
@@ -42,8 +39,7 @@ namespace ObjectPermanence
         [SerializeField] private List<Component> _overrideComponents;
        
         private ObserverComponent.PermanenceObject _permanenceObject;
-        private Rigidbody _rigidbody;
-        private List<dynamic> _components;
+        private List<dynamic> _components; // Component types must be preserved so the correction version of ComponentUtils.ToggleComponent is called
 
         public PermanenceComponent()
         {
@@ -52,7 +48,6 @@ namespace ObjectPermanence
             _overrideComponents = new List<Component>();
 
             _permanenceObject = default;
-            _rigidbody = null;
             _components = new List<dynamic>();
         }
 
@@ -104,7 +99,6 @@ namespace ObjectPermanence
             _components.Clear();
 
             InitValidComponentsOnGameObject();
-            InitRigidbody();
             InitPermanenceObject();
             UpdateVisibilityState(_visibilityState);
         }
@@ -116,17 +110,22 @@ namespace ObjectPermanence
                 .Where(c => c != this && !_overrideComponents.Contains(c))
                 .ToList();
 
-            _components
-                .RemoveAll(c =>
-                {
-                    bool validComponent = false;
+            /*
+             * Previously I did this reflection to find if a component can be enabled/disabled.
+             * It has its downsides so was removed, but I still think it was kinda neat.
+             * 
+                _components
+                    .RemoveAll(c =>
+                    {
+                        bool validComponent = false;
 
-                    Type type = c.GetType();
-                    PropertyInfo[] properties = type.GetProperties();
-                    validComponent = properties.Any(p => p.Name == "enabled");
+                        Type type = c.GetType();
+                        PropertyInfo[] properties = type.GetProperties();
+                        validComponent = properties.Any(p => p.Name == "enabled");
 
-                    return !validComponent; // RemoveAll removes entries which match the predicate
-                });
+                        return !validComponent; // RemoveAll removes entries which match the predicate
+                    });
+            */
         }
 
         private void InitPermanenceObject()
@@ -135,26 +134,11 @@ namespace ObjectPermanence
             _permanenceObject.RendererComponent = GetComponent<Renderer>();
         }
 
-        private void InitRigidbody()
-        {
-            TryGetComponent<Rigidbody>(out _rigidbody);
-            if (_rigidbody && _overrideComponents.Contains(_rigidbody))
-            {
-                _rigidbody = null;
-            }
-        }
-
         private void ToggleComponents(bool toggleState)
         {
-            if (_rigidbody) // Rigidbody does not have an enabled property but we need to handle it or objects will just fall through the world :p
-            {
-                _rigidbody.isKinematic = !toggleState;
-                _rigidbody.detectCollisions = toggleState;
-            }
-
             foreach (dynamic component in _components)
             {
-                component.enabled = toggleState;
+                ComponentUtils.ToggleComponent(component, toggleState);
             }
         }
     }
