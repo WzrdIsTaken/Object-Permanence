@@ -15,11 +15,19 @@ Tasks:
 - 
 
 * General:
-- player movement probs
+- Pull in navmesh and create an enemy which just moves towards the player.
+- Add logic for the player 'death' / a key to reset the scene
+- Then VR! ^ This is the final stuff we need to do for game logic.
+
+- Idk if we need it but there is a Renderer.shadowCastingMode. I think its fine, but do we need to set it on/off in ComponentUtils?
+	- If so, log / check what the default mode is... I'm guessing its just "on"
+		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
+
 - singleton constructor called twice?
 - im sure we did an init list type thing in telekensis project..
 
 Archive:
+- player movement probs
 - reorganise code files (not very well organised atm)
 - add way to enable/disables objects
 - organise this file

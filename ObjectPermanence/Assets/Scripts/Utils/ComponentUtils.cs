@@ -50,11 +50,12 @@ namespace ObjectPermanence
 
         public static void ToggleComponent(Rigidbody rigidbody, bool toggleState)
         {
+            // Using isKinematic wipes all velocity etc from the rb... .simulated isn't aviable on a rigidbody 3d.. ):
+            // Ideally, I just want to remove the rb from the physics sim - not alter any of its values.
+
+            rigidbody.isKinematic = !toggleState; 
             rigidbody.detectCollisions = toggleState;
             rigidbody.useGravity = toggleState;
-
-            // rigidbody.isKinematic = !toggleState; This wipes all velocity from the rb. 
-            // .simulated isn't aviable on a rigidbody 3d.. ):
         }
 
 #pragma warning disable IDE0060 // Remove unused parameter

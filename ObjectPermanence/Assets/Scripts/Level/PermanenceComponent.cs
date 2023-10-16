@@ -37,6 +37,7 @@ namespace ObjectPermanence
         private VisibilityState _visibilityState;
         [SerializeField] private OnBecomeVisible _onBecomeVisible;
         [SerializeField] private List<Component> _overrideComponents;
+        [SerializeField] private bool _disableGameObject; // If this is set, overriden components will still be disabled
        
         private ObserverComponent.PermanenceObject _permanenceObject;
         private List<dynamic> _components; // Component types must be preserved so the correction version of ComponentUtils.ToggleComponent is called
@@ -46,6 +47,7 @@ namespace ObjectPermanence
             _visibilityState = VisibilityState.NotSet;
             _onBecomeVisible = OnBecomeVisible.Activate;
             _overrideComponents = new List<Component>();
+            _disableGameObject = false;
 
             _permanenceObject = default;
             _components = new List<dynamic>();
@@ -136,6 +138,19 @@ namespace ObjectPermanence
 
         private void ToggleComponents(bool toggleState)
         {
+            if (_disableGameObject)
+            {
+                // This is really annoying and goes against what I'm trying to do... but setting isKinematic
+                // or using constraints on a rigidbody resets all its velocity values. I could copy them 
+                // all back/fourth (despite C# making copying annoying...) but I think its just easier 
+                // for this prototype to set the gameobject (and who knows, perhaps there are other Unity
+                // components like this...). Objects which need this behavior don't need to override 
+                // any components, so its ok.
+
+                gameObject.SetActive(toggleState);
+                return;
+            }
+
             foreach (dynamic component in _components)
             {
                 ComponentUtils.ToggleComponent(component, toggleState);

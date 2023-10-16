@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBecomeVisible: 0
   _overrideComponents: []
+  _disableGameObject: 1
 --- !u!114 &5630881786601282748
 MonoBehaviour:
   m_ObjectHideFlags: 0
