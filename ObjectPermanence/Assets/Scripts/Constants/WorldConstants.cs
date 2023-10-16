@@ -5,6 +5,7 @@ namespace ObjectPermanence
      */
     public static class WorldConstants
     {
+        public static readonly float DestroyY = -50.0f;
         public static readonly float Gravity = -9.8f;
     }
 }

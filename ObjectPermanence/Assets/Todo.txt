@@ -17,6 +17,7 @@ Tasks:
 * General:
 - player movement probs
 - singleton constructor called twice?
+- im sure we did an init list type thing in telekensis project..
 
 Archive:
 - reorganise code files (not very well organised atm)

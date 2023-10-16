@@ -14,13 +14,13 @@ namespace ObjectPermanence
             public float Y;
         }
 
-        [SerializeField] private Transform _target;
+        [SerializeField] private Transform _playerBody;
         [SerializeField] private float _mouseSensitivity;
         private float _xRotation;
 
         public PlayerLookComponent()
         {
-            _target = null;
+            _playerBody = null;
             _mouseSensitivity = 100.0f;
             _xRotation = 0.0f;
         }
@@ -30,7 +30,7 @@ namespace ObjectPermanence
             LookInput input = GetInput();
 
             MoveHorizontal(input);
-            MoveHorizontal(input);
+            MoveVertical(input);
         }
 
         private LookInput GetInput()
@@ -44,7 +44,7 @@ namespace ObjectPermanence
 
         private void MoveHorizontal(LookInput input)
         {
-            _target.Rotate(Vector3.up * input.X);
+            _playerBody.Rotate(Vector3.up * input.X);
         }
 
         private void MoveVertical(LookInput input)

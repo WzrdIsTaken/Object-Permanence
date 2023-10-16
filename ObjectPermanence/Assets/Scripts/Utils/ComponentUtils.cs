@@ -50,8 +50,11 @@ namespace ObjectPermanence
 
         public static void ToggleComponent(Rigidbody rigidbody, bool toggleState)
         {
-            rigidbody.isKinematic = !toggleState;
+            rigidbody.detectCollisions = toggleState;
             rigidbody.useGravity = toggleState;
+
+            // rigidbody.isKinematic = !toggleState; This wipes all velocity from the rb. 
+            // .simulated isn't aviable on a rigidbody 3d.. ):
         }
 
 #pragma warning disable IDE0060 // Remove unused parameter

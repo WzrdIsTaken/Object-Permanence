@@ -6,6 +6,12 @@ namespace ObjectPermanence
     /**
      * Detects PermanenceComponents and calls UpdateVisibilityState, passing in if the are
      * visible to the set observer camera or not.
+     * 
+     * Notes:
+     *  - We need the inside check to reduce the jitteriness when moving backwards through objects. 
+     *    Otherwise, when we are inside the object it becomes visible to the camera and the collider 
+     *    gets enabled. I found that increasing the bounds just a little when doing this check 
+     *    helped make it smoother.
      */
     public class ObserverComponent : MonoBehaviour
     {
@@ -17,11 +23,13 @@ namespace ObjectPermanence
 
         [SerializeField] private Camera _observerCamera;
         private List<PermanenceObject> _permanenceObjects;
+        private readonly float _boundsInsideCheckExpansionAmount;
 
         public ObserverComponent()
         {
             _observerCamera = null;
             _permanenceObjects = new List<PermanenceObject>();
+            _boundsInsideCheckExpansionAmount = 0.75f; 
         }
 
         private void Awake()
@@ -46,8 +54,13 @@ namespace ObjectPermanence
             Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_observerCamera);
             foreach (PermanenceObject permanenceObject in _permanenceObjects)
             {
-                bool visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObject.RendererComponent.bounds);
-                var visiblilityState = visible ? PermanenceComponent.VisibilityState.Visible : PermanenceComponent.VisibilityState.NotVisible;
+                Bounds permanenceObjectBounds = permanenceObject.RendererComponent.bounds;
+                bool visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObjectBounds);
+
+                permanenceObjectBounds.Expand(_boundsInsideCheckExpansionAmount);
+                bool inside = permanenceObject.RendererComponent.bounds.Contains(_observerCamera.transform.position);
+
+                var visiblilityState = (visible && !inside) ? PermanenceComponent.VisibilityState.Visible : PermanenceComponent.VisibilityState.NotVisible;
                 permanenceObject.PermanenceComponent.UpdateVisibilityState(visiblilityState);
             }
         }
