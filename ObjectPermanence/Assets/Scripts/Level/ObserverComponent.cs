@@ -54,15 +54,47 @@ namespace ObjectPermanence
             Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_observerCamera);
             foreach (PermanenceObject permanenceObject in _permanenceObjects)
             {
-                Bounds permanenceObjectBounds = permanenceObject.RendererComponent.bounds;
-                bool visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObjectBounds);
+                bool visible = false;
+                bool inside = false;
+                Vector3 observerCameraPosition = _observerCamera.transform.position;
 
-                permanenceObjectBounds.Expand(_boundsInsideCheckExpansionAmount);
-                bool inside = permanenceObjectBounds.Contains(_observerCamera.transform.position);
+                Bounds permanenceObjectBounds = permanenceObject.RendererComponent.bounds;
+                visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObjectBounds);
+
+                if (visible)
+                {
+                    visible &= RaycastToObjectBoundingBoxExtents(observerCameraPosition,
+                        permanenceObjectBounds, permanenceObject.PermanenceComponent.gameObject);
+                }
+                if (visible)
+                {
+                    permanenceObjectBounds.Expand(_boundsInsideCheckExpansionAmount);
+                    inside = permanenceObjectBounds.Contains(observerCameraPosition);
+                }
 
                 var visiblilityState = (visible && !inside) ? PermanenceComponent.VisibilityState.Visible : PermanenceComponent.VisibilityState.NotVisible;
                 permanenceObject.PermanenceComponent.UpdateVisibilityState(visiblilityState);
             }
+        }
+
+        private bool RaycastToObjectBoundingBoxExtents(Vector3 rayStart, Bounds objectBounds, GameObject objectSelf)
+        {
+            // We could iterate through all the bounds.. but this produces the desired behaviour less expensively
+
+            int exclusionLayer = ~(1 << gameObject.layer);
+            Physics.Linecast(rayStart, objectBounds.min, out RaycastHit minHit, exclusionLayer);
+            Physics.Linecast(rayStart, objectBounds.max, out RaycastHit maxHit, exclusionLayer);
+
+            if (minHit.collider && maxHit.collider)
+            {
+                if (minHit.collider.gameObject != objectSelf &&
+                    maxHit.collider.gameObject != objectSelf)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void OnPermanenceObjectCreated(PermanenceObject permanenceObject)

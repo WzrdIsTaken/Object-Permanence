@@ -7,5 +7,6 @@ namespace ObjectPermanence
     {
         public static readonly string Player = "Player";
         public static readonly string Ground = "Ground";
+        public static readonly string Environment = "Environment";
     }
 }
