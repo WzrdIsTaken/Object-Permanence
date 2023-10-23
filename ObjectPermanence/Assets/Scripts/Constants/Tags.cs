@@ -6,5 +6,6 @@ namespace ObjectPermanence
     public static class Tags
     {
         public static readonly string PlayerTag = "Player";
+        public static readonly string EnemyTag = "Enemy";
     }
 }
