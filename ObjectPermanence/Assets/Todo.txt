@@ -15,7 +15,9 @@ Tasks:
 - 
 
 * General:
-- Pull in navmesh and create an enemy which just moves towards the player.
+- Reorganise files? Got a managers folder with lots of debug stuff in it...
+- We might well use the new input system for the vr stuff. if we do this, refactor the player etc and also the debug console. it works in zipzap
+
 - Add logic for the player 'death' / a key to reset the scene
 - Then VR! ^ This is the final stuff we need to do for game logic.
 
@@ -27,6 +29,7 @@ Tasks:
 - im sure we did an init list type thing in telekensis project..
 
 Archive:
+- Pull in navmesh and create an enemy which just moves towards the player.
 - player movement probs
 - reorganise code files (not very well organised atm)
 - add way to enable/disables objects
