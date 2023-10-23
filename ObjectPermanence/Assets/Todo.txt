@@ -10,12 +10,18 @@ Resources:
 * Assets
 - Blockout textures: https://kenney.itch.io/
 
+* Tutorials
+- "How To Setup VR Development in Unity 2022.2 with a Quest 2 (XR Interaction Toolkit 2.1)" https://youtu.be/tGZgJ5XtOXo?feature=shared (super useful for the meta side)
+- "How to make a VR game - Untiy XR Toolkit 2022" https://youtu.be/fM0k2n7u8sc?feature=shared
+
 Tasks:
 * Long Term:
 - 
 
 * General:
 - Reorganise files? Got a managers folder with lots of debug stuff in it...
+- And reorganise the models stuff etc. Got those oculos folders
+
 - We might well use the new input system for the vr stuff. if we do this, refactor the player etc and also the debug console. it works in zipzap
 
 - Add logic for the player 'death' / a key to reset the scene
