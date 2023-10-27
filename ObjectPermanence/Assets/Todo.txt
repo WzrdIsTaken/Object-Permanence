@@ -19,8 +19,9 @@ Tasks:
 - 
 
 * General:
-- Reorganise files? Got a managers folder with lots of debug stuff in it...
+- Reorganise files? Got a managers folder with lots of debug stuff in it... and stuff in level
 - And reorganise the models stuff etc. Got those oculos folders
+- Do we want/need URP?
 
 - We might well use the new input system for the vr stuff. if we do this, refactor the player etc and also the debug console. it works in zipzap
 
