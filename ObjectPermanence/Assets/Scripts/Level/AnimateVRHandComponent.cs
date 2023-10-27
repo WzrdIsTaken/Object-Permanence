@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ObjectPermanence
 {
     /**
-     * TODO desc and link tut
+     * Animates the VR hands.
+     * Credit: Valem Tutorials https://youtu.be/8PCNNro7Rt0?feature=shared
      */
     public class AnimateVRHandComponent : MonoBehaviour
     {
