@@ -23,6 +23,18 @@ namespace ObjectPermanence
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        public static void ToggleAllEnemies(MonoBehaviour monoBehaviour, bool toggleState)
+        {
+            DebugManager.Instance.ConditionalLog(toggleState, LogLevel.Info, DebugCategory.Level,
+                "Unfortunately you cant find disabled objects in any nice way. So I'm afraid you'll have to manually enable the enemies ):");
+
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(Tags.EnemyTag);
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.SetActive(toggleState);
+            }
+        }
 #pragma warning restore IDE0060 // Remove unused parameter
     }
 }

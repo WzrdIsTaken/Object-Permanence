@@ -9,16 +9,16 @@ namespace ObjectPermanence
      */
     public class AnimateVRHandComponent : MonoBehaviour
     {
-        [SerializeField] private InputActionProperty _pinchAnimationAction;
-        [SerializeField] private InputActionProperty _gripAnimationAction;
+        [SerializeField] private InputActionProperty _pinchInput;
+        [SerializeField] private InputActionProperty _gripInput;
         [SerializeField] private Animator _handAnimator;
 
         private void Update()
         {
-            float triggerValue = _pinchAnimationAction.action.ReadValue<float>();
+            float triggerValue = _pinchInput.action.ReadValue<float>();
             _handAnimator.SetFloat("Trigger", triggerValue);
 
-            float gripvalue = _gripAnimationAction.action.ReadValue<float>();
+            float gripvalue = _gripInput.action.ReadValue<float>();
             _handAnimator.SetFloat("Grip", gripvalue);
         }
     }

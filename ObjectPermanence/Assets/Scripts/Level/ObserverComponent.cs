@@ -22,8 +22,8 @@ namespace ObjectPermanence
         }
 
         [SerializeField] private Camera _observerCamera;
+        [SerializeField] private float _boundsInsideCheckExpansionAmount;
         private List<PermanenceObject> _permanenceObjects;
-        private readonly float _boundsInsideCheckExpansionAmount;
 
         public ObserverComponent()
         {

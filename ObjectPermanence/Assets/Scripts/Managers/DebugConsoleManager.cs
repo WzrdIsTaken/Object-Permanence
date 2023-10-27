@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ObjectPermanence
 {
@@ -20,6 +21,9 @@ namespace ObjectPermanence
             public float HelpBoxHeight;
             public Color Colour;
         }
+
+        //[SerializeField] private InputActionProperty _toggleInput;
+        //[SerializeField] private InputActionProperty _enterInput;
 
         [SerializeField] private ConsoleSettings _consoleSettings;
         [SerializeField] private bool _enableConsole;
@@ -57,6 +61,11 @@ namespace ObjectPermanence
                 {
                     DebugCommandFunctions.ResetScene(this);
                 }));
+            AddCommand(new DebugCommand<bool>("toggle_enemies", "Enables or disables all enemies", "toggle_enemies [true/false]",
+                (toggleState) =>
+                {
+                    DebugCommandFunctions.ToggleAllEnemies(this, toggleState);
+                }));
 
             AddCommand(new DebugCommand("help", "Displays all the available commands, call again to toggle off the display", "help",
                 () =>
@@ -67,7 +76,7 @@ namespace ObjectPermanence
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tilde))
+            if (Keyboard.current.backquoteKey.wasPressedThisFrame)
             {
                 if (_enableConsole)
                 {
@@ -81,7 +90,7 @@ namespace ObjectPermanence
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Keyboard.current.enterKey.wasPressedThisFrame)
             {
                 if (_enableConsole)
                 {
@@ -141,6 +150,10 @@ namespace ObjectPermanence
                     if (command as DebugCommand != null)
                     {
                         (command as DebugCommand).Invoke();
+                    }
+                    if (command as DebugCommand<bool> != null)
+                    {
+                        (command as DebugCommand<bool>).Invoke(bool.Parse(commandProperties[1]));
                     }
                     if (command as DebugCommand<string> != null)
                     {

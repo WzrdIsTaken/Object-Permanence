@@ -1,0 +1,2 @@
+The vr input is from the sample asset pack.
+ObjectPermanence\Assets\Samples\XR Interaction Toolkit\2.4.3

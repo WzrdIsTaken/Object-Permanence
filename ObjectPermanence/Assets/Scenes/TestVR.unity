@@ -214,25 +214,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a108f82fa4cb2ab4f8e29d64b41766bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinchAnimationAction:
+  _pinchInput:
     m_UseReference: 1
     m_Action:
-      m_Name: Pinch Animation
+      m_Name: Pinch Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: a114e12c-946b-4889-8c0f-f48edf7ff81d
+      m_Id: 32d8b444-c7a3-4a64-b118-ba1fdff74aaa
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _gripAnimationAction:
+  _gripInput:
     m_UseReference: 1
     m_Action:
-      m_Name: Grip Animation
+      m_Name: Grip Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 4247fc47-9e67-4448-8cf7-a56e9900a4ff
+      m_Id: 4e549330-6608-453b-9091-7ded62a8ad9c
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1178,25 +1178,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a108f82fa4cb2ab4f8e29d64b41766bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinchAnimationAction:
+  _pinchInput:
     m_UseReference: 1
     m_Action:
-      m_Name: Pinch Animation
+      m_Name: Pinch Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 0bc954a4-072d-4c5b-964d-0c4d00d77ba2
+      m_Id: d030b9ef-fdaa-4cfd-8c46-588fd4eaa168
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _gripAnimationAction:
+  _gripInput:
     m_UseReference: 1
     m_Action:
-      m_Name: Grip Animation
+      m_Name: Grip Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: feb97954-bb65-40b4-883b-f129a25e0d88
+      m_Id: e83db170-2532-4307-966d-3db4fefc86ed
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []

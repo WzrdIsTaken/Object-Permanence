@@ -93,6 +93,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e8a7d92cc985147b049104992db559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toggleInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Toggle Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f203ad6c-18b2-4659-ad2d-4b2415e1b884
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6700928759233634441, guid: df1c5cc621030f94f8950f28d86dc94b, type: 3}
+  _enterInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Enter Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d7ff664d-b323-4c75-a674-3ac77ddc3b19
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6934151495941792649, guid: df1c5cc621030f94f8950f28d86dc94b, type: 3}
   _consoleSettings:
     Height: 30
     HelpBoxHeight: 100
