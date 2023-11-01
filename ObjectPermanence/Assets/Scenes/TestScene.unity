@@ -3508,7 +3508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &772465213
 Transform:
   m_ObjectHideFlags: 0
@@ -3629,11 +3629,11 @@ GameObject:
   - component: {fileID: 822273226}
   m_Layer: 0
   m_Name: VR Player Take 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &822273226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1213626351}
   - component: {fileID: 1213626353}
   m_Layer: 0
-  m_Name: ObserverCamera
+  m_Name: Observer Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5417,7 +5417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observerCamera: {fileID: 1213626352}
-  _boundsInsideCheckExpansionAmount: 0.6
+  _boundsInsideCheckExpansionAmount: 0.5
 --- !u!20 &1213626352
 Camera:
   m_ObjectHideFlags: 0
@@ -7504,7 +7504,7 @@ GameObject:
   - component: {fileID: 7497231952088066056}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7529,7 +7529,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 70890829092863641, guid: 5d843c88bae079345b88459dab0931c0, type: 3}
+  - {fileID: 2100000, guid: 566d63bfeff849f4f83377a227a8653c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
