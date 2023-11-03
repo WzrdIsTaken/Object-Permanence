@@ -49,6 +49,52 @@ MonoBehaviour:
   _categoryFilter:
     _enabled: 0
     _value: 0
+--- !u!1 &962866446599339796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2894200074106187389}
+  - component: {fileID: 2545803584961204877}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2894200074106187389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962866446599339796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8581095165760980034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2545803584961204877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962866446599339796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8282b68e8930f994faff3447d9bb0304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMixer: {fileID: 24100000, guid: ea8f1346b5317404d973dc1457c1e378, type: 2}
+  _sourceVoicePoolSize: 10
 --- !u!1 &3099600523493137109
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,30 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e8a7d92cc985147b049104992db559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toggleInput:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Toggle Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: f203ad6c-18b2-4659-ad2d-4b2415e1b884
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 6700928759233634441, guid: df1c5cc621030f94f8950f28d86dc94b, type: 3}
-  _enterInput:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Enter Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: d7ff664d-b323-4c75-a674-3ac77ddc3b19
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 6934151495941792649, guid: df1c5cc621030f94f8950f28d86dc94b, type: 3}
   _consoleSettings:
     Height: 30
     HelpBoxHeight: 100
@@ -167,6 +189,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorLockMode: 1
+--- !u!1 &4775897172608413939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1204930286333528202}
+  - component: {fileID: 4387112135255898176}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204930286333528202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775897172608413939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8581095165760980034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4387112135255898176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775897172608413939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b5042162456f744b9a2d9e5c8b59c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7879825941342691541
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,5 +265,7 @@ Transform:
   - {fileID: 2215213844100571520}
   - {fileID: 790442484872978804}
   - {fileID: 216315586404615568}
+  - {fileID: 2894200074106187389}
+  - {fileID: 1204930286333528202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

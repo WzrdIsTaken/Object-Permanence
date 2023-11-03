@@ -5,6 +5,7 @@ namespace ObjectPermanence
      */
     public enum DebugCategory
     {
+        Audio,
         Debug,
         Level
     }
