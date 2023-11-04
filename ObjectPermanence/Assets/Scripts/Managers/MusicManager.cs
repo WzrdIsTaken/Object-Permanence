@@ -59,7 +59,7 @@ namespace ObjectPermanence
 
             _currentMusicGroupID = AudioGroupID.None;
             _currentMusicGroupPlayedIds.Clear();
-            _currentMusicSourceVoice?.Stop();
+            AudioManager.Instance.StopVoice(_currentMusicSourceVoice);
             _currentMusicSourceVoice = null;
         }
 

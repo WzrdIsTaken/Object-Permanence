@@ -12,17 +12,19 @@ namespace ObjectPermanence
 
     public struct AudioPlaySettings
     {
-        public static AudioPlaySettings Default = new(1.0f, 1.0f, false);
+        public static AudioPlaySettings Default = new(1.0f, 1.0f, false, null);
 
         public float Volume;
         public float Pitch;
         public bool Loop;
+        public Vector3? Position;
 
-        public AudioPlaySettings(float volume, float pitch, bool loop)
+        public AudioPlaySettings(float volume, float pitch, bool loop, Vector3? position)
         {
             Volume = volume;
             Pitch = pitch;
             Loop = loop;
+            Position = position;
         }
     }
 
@@ -35,11 +37,11 @@ namespace ObjectPermanence
     public class AudioManager : Singleton<AudioManager>
     {
         [SerializeField] private AudioMixer _mainMixer;
-        [SerializeField] private uint _sourceVoicePoolSize;
+        [SerializeField] private uint _voicePoolSize;
 
         private Dictionary<AudioMixerID, AudioMixerGroup> _audioMixers;
         private Dictionary<AudioID, AudioEffect> _audioEffects;
-        private AudioSource[] _sourceVoicePool;
+        private AudioSource[] _voicePool;
 
         private const string _audioEffectsResourcePath = "Audio/Effects";
         private const string _musicMixerName = "Music";
@@ -48,11 +50,11 @@ namespace ObjectPermanence
         private AudioManager()
         {
             _mainMixer = null;
-            _sourceVoicePoolSize = 3u;
+            _voicePoolSize = 3u;
 
             _audioMixers = new Dictionary<AudioMixerID, AudioMixerGroup>();
             _audioEffects = new Dictionary<AudioID, AudioEffect>();
-            _sourceVoicePool = null;
+            _voicePool = null;
         }
 
         protected override void Awake()
@@ -60,56 +62,72 @@ namespace ObjectPermanence
             base.Awake();
 
             InitAudioMixers(_musicMixerName, _sfxMixerName);
-            InitSourceVoicePool(_sourceVoicePoolSize);
+            InitVoicePool(_voicePoolSize);
             InitAudioEffects(_audioEffectsResourcePath);
         }
 
         public AudioSource PlayEffect(AudioID audioID, AudioMixerID mixerID, AudioPlaySettings playSettings, AudioSource existingSource = null)
         {
-            AudioMixerGroup mixer = GetAudioMixer(mixerID);
-            AudioEffect effect = GetAudioEffect(audioID);
-            AudioSource voice = existingSource ? existingSource : GetAudioSourceVoice();
+            AudioMixerGroup mixer = GetMixer(mixerID);
+            AudioEffect effect = GetEffect(audioID);
+            AudioSource voice = existingSource ? existingSource : GetAvailableVoice();
 
             if (mixer && effect && voice)
             {
-                SetAudioSourceForEffect(voice, mixer, effect, playSettings);
+                SetAudioVoiceForEffect(voice, mixer, effect, playSettings);
                 voice.Play();
             }
 
             return voice;
         }
 
-        public void StopAllAudioEffects(AudioID id)
+        public void StopVoice(AudioSource voice)
         {
-            AudioEffect effect = GetAudioEffect(id);
-            StopAllAudioEffectsHelper(effect, (v => v.clip == effect.Clip));
+            if (voice)
+            {
+                voice.Stop();
+            }
         }
 
-        public void StopAllAudioEffects(AudioMixerID id)
+        public void StopVoices(IEnumerable<AudioSource> voices)
         {
-            AudioMixerGroup mixer = GetAudioMixer(id);
-            StopAllAudioEffectsHelper(mixer, (v => v.outputAudioMixerGroup == mixer));
+            foreach (AudioSource voice in voices)
+            {
+                StopVoice(voice);
+            }
         }
 
-        public AudioMixerGroup GetAudioMixer(AudioMixerID id)
+        public IEnumerable<AudioSource> GetAllVoices(AudioID id)
         {
-            return GetAudioHelper(id, _audioMixers);
+            AudioEffect effect = GetEffect(id);
+            return GetAudioVoicesHelper(effect, (v => v.clip == effect.Clip));
         }
 
-        public AudioEffect GetAudioEffect(AudioID id)
+        public IEnumerable<AudioSource> GetAllVoices(AudioMixerID id)
         {
-            return GetAudioHelper(id, _audioEffects);
+            AudioMixerGroup mixer = GetMixer(id);
+            return GetAudioVoicesHelper(mixer, (v => v.outputAudioMixerGroup == mixer));
         }
 
-        private void InitSourceVoicePool(uint poolSize)
+        public AudioMixerGroup GetMixer(AudioMixerID id)
         {
-            _sourceVoicePool = new AudioSource[poolSize];
+            return GetAudioAssetHelper(id, _audioMixers);
+        }
+
+        public AudioEffect GetEffect(AudioID id)
+        {
+            return GetAudioAssetHelper(id, _audioEffects);
+        }
+
+        private void InitVoicePool(uint poolSize)
+        {
+            _voicePool = new AudioSource[poolSize];
 
             for (uint i = 0u; i < poolSize; ++i)
             {
-                GameObject sourceVoice = new($"SourceVoice{i}");
-                sourceVoice.transform.parent = transform;
-                _sourceVoicePool[i] = sourceVoice.AddComponent<AudioSource>();
+                var voice = new GameObject($"Voice{i}");
+                voice.transform.parent = transform;
+                _voicePool[i] = voice.AddComponent<AudioSource>();
             }
         }
 
@@ -142,7 +160,7 @@ namespace ObjectPermanence
         {
             void InitAudioMixersHelper(AudioMixerID id, string mixerName)
             {
-                AudioMixerGroup mixer = _mainMixer.FindMatchingGroups(mixerName).First();
+                AudioMixerGroup mixer = _mainMixer.FindMatchingGroups(mixerName).FirstOrDefault();
                 if (mixer)
                 {
                     _audioMixers.Add(id, mixer);
@@ -158,17 +176,17 @@ namespace ObjectPermanence
             InitAudioMixersHelper(AudioMixerID.SFX, sfxMixerName);
         }
 
-        private AudioSource GetAudioSourceVoice()
+        private AudioSource GetAvailableVoice()
         {
-            AudioSource source = null;
-            source = _sourceVoicePool.Where(v => !v.isPlaying).FirstOrDefault();
+            AudioSource voice = null;
+            voice = _voicePool.Where(v => !v.isPlaying).FirstOrDefault();
 
-            DebugManager.Instance.Assert(source, AssertLevel.Assert, DebugCategory.Audio,
-                $"Couldn't find an available source voice. Consider increasing the pool size?");
-            return source;
+            DebugManager.Instance.Assert(voice, AssertLevel.Assert, DebugCategory.Audio,
+                $"Couldn't find an available voice. Consider increasing the pool size?");
+            return voice;
         }
 
-        private void SetAudioSourceForEffect(AudioSource voice, AudioMixerGroup mixer, AudioEffect effect, AudioPlaySettings playSettings)
+        private void SetAudioVoiceForEffect(AudioSource voice, AudioMixerGroup mixer, AudioEffect effect, AudioPlaySettings playSettings)
         {
             voice.outputAudioMixerGroup = mixer;
             voice.clip = effect.Clip;
@@ -176,21 +194,33 @@ namespace ObjectPermanence
             voice.volume = playSettings.Volume;
             voice.pitch = playSettings.Pitch;
             voice.loop = playSettings.Loop;
-        }
 
-        private void StopAllAudioEffectsHelper<T>(T comparisonType, Func<AudioSource, bool> findFunc) where T : class
-        {
-            if (comparisonType != null)
+            if (playSettings.Position.HasValue)
             {
-                IEnumerable<AudioSource> voices = _sourceVoicePool.Where(findFunc);
-                foreach (AudioSource voice in voices)
-                {
-                    voice.Stop();
-                }
+                const float spatialBlend3D = 1.0f;
+                voice.spatialBlend = spatialBlend3D;
+                voice.transform.position = playSettings.Position.Value;
+            }
+            else
+            {
+                const float spatialBlend2D = 0.0f;
+                voice.spatialBlend = spatialBlend2D;
             }
         }
 
-        private U GetAudioHelper<T, U>(T id, Dictionary<T, U> dictionary) where T : Enum /*,*/ where U : class
+        private IEnumerable<AudioSource> GetAudioVoicesHelper<T>(T comparisonType, Func<AudioSource, bool> findFunc) where T : class
+        {
+            IEnumerable<AudioSource> voices = null;
+
+            if (comparisonType != null)
+            {
+                voices = _voicePool.Where(findFunc);
+            }
+
+            return voices;
+        }
+
+        private U GetAudioAssetHelper<T, U>(T id, Dictionary<T, U> dictionary) where T : Enum /*,*/ where U : class
         {
             U idType = null;
 

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMixer: {fileID: 24100000, guid: ea8f1346b5317404d973dc1457c1e378, type: 2}
-  _sourceVoicePoolSize: 10
+  _voicePoolSize: 30
 --- !u!1 &3099600523493137109
 GameObject:
   m_ObjectHideFlags: 0
