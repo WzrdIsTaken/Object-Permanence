@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe4c226f40fd1145a709c7c0daf2fb4, type: 3}
-  m_Name: TestAudioEffect
+  m_Name: ResetSoundEffect
   m_EditorClassIdentifier: 
-  ID: 1
-  Clip: {fileID: 8300000, guid: 8f0058538666f424b8c3caf3cebe0f86, type: 3}
+  ID: 0
+  Clip: {fileID: 8300000, guid: e91bac1d9d5cb4b418fbe131d2a92fa2, type: 3}

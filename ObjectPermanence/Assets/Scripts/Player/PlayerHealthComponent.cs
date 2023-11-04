@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ObjectPermanence
 {
@@ -37,6 +38,8 @@ namespace ObjectPermanence
             if (!_dead)
             {
                 DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, "Player has died");
+                AudioManager.Instance.PlayEffect(AudioID.Reset, AudioMixerID.SFX, AudioPlaySettings.Default);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 _dead = true;
             }
         }

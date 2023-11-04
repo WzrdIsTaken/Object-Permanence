@@ -5,6 +5,7 @@ namespace ObjectPermanence
      */
     public enum AudioID : uint
     {
+        Reset,
         Test,
         // Any other audio effects here!
 

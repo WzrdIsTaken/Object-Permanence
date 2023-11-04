@@ -22,6 +22,7 @@ namespace ObjectPermanence
         private void Collect()
         {
             DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, "Player collected a collectable");
+            FindFirstObjectByType<CollectableTrackerComponent>().Collect();
             Destroy(gameObject);
         }
     }
