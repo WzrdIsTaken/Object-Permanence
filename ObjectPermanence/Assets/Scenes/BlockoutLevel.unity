@@ -6718,6 +6718,10 @@ PrefabInstance:
       propertyPath: m_AllowMSAA
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2271712934322436685, guid: 89dc00566aed5e74f80ab8659807d0da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f040756a81e845841b521c1e1bc81eef, type: 2}
     - target: {fileID: 3989341106145313234, guid: 89dc00566aed5e74f80ab8659807d0da, type: 3}
       propertyPath: m_Height
       value: 1
