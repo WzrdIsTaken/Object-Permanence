@@ -136,8 +136,6 @@ namespace ObjectPermanence
             AudioEffect[] audioEffects = Resources.LoadAll<AudioEffect>(path);
             foreach (AudioEffect audioEffect in audioEffects)
             {
-                Debug.Log(audioEffect.name);
-
                 DebugManager.Instance.Assert(audioEffect.ID != AudioID.None, AssertLevel.Assert, DebugCategory.Audio,
                         $"Loading an audio effect \"{audioEffect.name}\" which doesn't have a valid ID");
                 DebugManager.Instance.Assert(audioEffect.Clip, AssertLevel.Assert, DebugCategory.Audio,
