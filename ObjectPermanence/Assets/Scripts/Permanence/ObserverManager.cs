@@ -113,22 +113,34 @@ namespace ObjectPermanence
 
         private void OnObserverCreated(ObserverComponent observer)
         {
-            _observers.Add(observer);
+            if (!_observers.Contains(observer))
+            {
+                _observers.Add(observer);
+            }
         }
 
         private void OnObserverDestroyed(ObserverComponent observer)
         {
-            _observers.Remove(observer);
+            if (_observers.Contains(observer))
+            {
+                _observers.Remove(observer);
+            }
         }
 
         private void OnPermanenceObjectCreated(PermanenceObject permanenceObject)
         {
-            _permanenceObjects.Add(permanenceObject);
+            if (!_permanenceObjects.Contains(permanenceObject))
+            {
+                _permanenceObjects.Add(permanenceObject);
+            }
         }
 
         private void OnPermanenceObjectDestroyed(PermanenceObject permanenceObject)
         {
-            _permanenceObjects.Remove(permanenceObject);
+            if (_permanenceObjects.Contains(permanenceObject))
+            {
+                _permanenceObjects.Remove(permanenceObject);
+            }
         }
     }
 }

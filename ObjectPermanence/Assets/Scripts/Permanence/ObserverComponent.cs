@@ -27,12 +27,22 @@ namespace ObjectPermanence
             _boundsInsideCheckExpansionAmount = 0.75f;       
         }
 
+        private void Start()
+        {
+            ObserverCreated?.Invoke(this);
+        }
+
         private void OnEnable()
         {
             ObserverCreated?.Invoke(this);
         }
 
         private void OnDisable()
+        {
+            ObserverDestroyed?.Invoke(this);
+        }
+
+        private void OnDestroy()
         {
             ObserverDestroyed?.Invoke(this);
         }
