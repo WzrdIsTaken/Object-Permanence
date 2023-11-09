@@ -19,9 +19,6 @@ Tasks:
 - Mechanic idea: Have mirrors/cameras which 'see' items so they don't deactivate. Could also be a mirrored ball or something the player holds?
 
 * General:
-- Add in the enemy to the blockout level
-- Make the player a bit smaller xd
-
 - Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
 	- https://www.youtube.com/watch?v=yQMywArQfyY
 	- https://www.youtube.com/watch?v=YAVL6grnsiM
@@ -30,14 +27,13 @@ Tasks:
 - the wall mechanic is still slighty buggy... see if we can fix? just change the param?
 - and the boulders when you look away and they are eg mid falling off. you can also push them around while looking away?
 	- fix up these bugs. we want a polished little demo
+	- The latter can be fixed when just a change in lv design
 
 
 - https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
   at the end of the video mentioned had tutorial about a shader for the teleporation effect?
 - Fix that the hand still squeezes when teleports?
 
-- Add logic for the player 'death' / a key to reset the scene
-- Then VR! ^ This is the final stuff we need to do for game logic.
 
 - Idk if we need it but there is a Renderer.shadowCastingMode. I think its fine, but do we need to set it on/off in ComponentUtils?
 	- If so, log / check what the default mode is... I'm guessing its just "on"
@@ -47,6 +43,10 @@ Tasks:
 - im sure we did an init list type thing in telekensis project..
 
 Archive:
+- Add in the enemy to the blockout level
+- Make the player a bit smaller xd
+- Add logic for the player 'death' / a key to reset the scene
+- Add logic for the player 'death' / a key to reset the scene
 - Reorganise files? Got a managers folder with lots of debug stuff in it... and stuff in level
 - We might well use the new input system for the vr stuff. if we do this, refactor the player etc and also the debug console. it works in zipzap
 - And reorganise the models stuff etc. Got those oculos folders
