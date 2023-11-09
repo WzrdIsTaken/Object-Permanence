@@ -56,6 +56,11 @@ namespace ObjectPermanence
                 {
                     DebugCommandFunctions.ChangeScene(this, sceneName);
                 }));
+            AddCommand(new DebugCommand("kill_player", "Calls TakeDamage on the PlayerHealthComponent, passing in int.MaxValue", "kill_player",
+                () =>
+                {
+                    DebugCommandFunctions.ResetScene(this);
+                }));
             AddCommand(new DebugCommand("reset_scene", "Resets the current scene", "reset_scene",
                 () =>
                 {
@@ -65,6 +70,11 @@ namespace ObjectPermanence
                 (toggleState) =>
                 {
                     DebugCommandFunctions.ToggleAllEnemies(this, toggleState);
+                }));
+            AddCommand(new DebugCommand("trigger_haptic", "Triggers a one second burst of haptic feedback", "trigger_haptic",
+                () =>
+                {
+                    DebugCommandFunctions.TriggerHaptic(this);  
                 }));
 
             AddCommand(new DebugCommand("help", "Displays all the available commands, call again to toggle off the display", "help",

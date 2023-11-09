@@ -29,6 +29,8 @@ Tasks:
 	- fix up these bugs. we want a polished little demo
 	- The latter can be fixed when just a change in lv design
 
+- Add a sound effect when you turn around and see an enemy for the first time or something? :D
+
 
 - https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
   at the end of the video mentioned had tutorial about a shader for the teleporation effect?

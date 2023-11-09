@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace ObjectPermanence
 {
@@ -19,6 +20,11 @@ namespace ObjectPermanence
             SceneManager.LoadScene(newSceneName);
         }
 
+        public static void KillPlayer(MonoBehaviour monoBehaviour)
+        {
+            GameObject.FindGameObjectWithTag(Tags.PlayerTag).GetComponent<PlayerHealthComponent>()?.TakeDamage(int.MaxValue);
+        }
+
         public static void ResetScene(MonoBehaviour monoBehaviour)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -34,6 +40,17 @@ namespace ObjectPermanence
             {
                 enemy.SetActive(toggleState);
             }
+        }
+
+        public static void TriggerHaptic(MonoBehaviour monoBehaviour)
+        {
+            VRUtils.ForeachController(
+                (XRBaseController controller) =>
+                {
+                    const float strength = 1.0f;
+                    const float duration = 1.0f;
+                    VRUtils.TriggerHaptic(controller, strength, duration);
+                });
         }
 #pragma warning restore IDE0060 // Remove unused parameter
     }

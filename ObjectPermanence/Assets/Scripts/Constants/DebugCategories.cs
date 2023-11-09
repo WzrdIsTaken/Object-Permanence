@@ -7,6 +7,7 @@ namespace ObjectPermanence
     {
         Audio,
         Debug,
-        Level
+        Level,
+        VR
     }
 }
