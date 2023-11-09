@@ -18,8 +18,8 @@ namespace ObjectPermanence
      */
     public class PermanenceComponent : MonoBehaviour
     {
-        public static event Action<ObserverComponent.PermanenceObject> PermanenceObjectCreated;
-        public static event Action<ObserverComponent.PermanenceObject> PermanenceObjectDestroyed;
+        public static event Action<ObserverManager.PermanenceObject> PermanenceObjectCreated;
+        public static event Action<ObserverManager.PermanenceObject> PermanenceObjectDestroyed;
 
         public enum VisibilityState
         {
@@ -39,7 +39,7 @@ namespace ObjectPermanence
         [SerializeField] private List<Component> _overrideComponents;
         [SerializeField] private bool _disableGameObject; // If this is set, overriden components will still be disabled
        
-        private ObserverComponent.PermanenceObject _permanenceObject;
+        private ObserverManager.PermanenceObject _permanenceObject;
         private List<dynamic> _components; // Component types must be preserved so the correction version of ComponentUtils.ToggleComponent is called
 
         public PermanenceComponent()
@@ -91,7 +91,7 @@ namespace ObjectPermanence
                 }
 
                 DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level,
-                    $"The gameobject \"{gameObject.name}\" is now {(visible ? "visible" : "not visible")} to the observer camera");
+                    $"The gameobject \"{gameObject.name}\" is now {(visible ? "visible" : "not visible")} to a observer camera");
             }
         }
 
@@ -146,6 +146,9 @@ namespace ObjectPermanence
                 // for this prototype to set the gameobject (and who knows, perhaps there are other Unity
                 // components like this...). Objects which need this behavior don't need to override 
                 // any components, so its ok.
+
+                // This also means we need to use Start/OnDestroy to hook up events, rather than OnEnable/OnDisable.
+                // hey, this is a prototype :p
 
                 gameObject.SetActive(toggleState);
                 return;

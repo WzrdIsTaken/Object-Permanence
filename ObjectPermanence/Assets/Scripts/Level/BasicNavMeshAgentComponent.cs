@@ -47,6 +47,7 @@ namespace ObjectPermanence
 
         private void OnDisable()
         {
+            _agent.isStopped = true;
             StopAllCoroutines(); // could also hold a ref to NavigationLoop?
         }
 
@@ -80,8 +81,11 @@ namespace ObjectPermanence
 
         private void SetDestination(Vector3 target)
         {
-            DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, $"{gameObject.name} agent moving to {target}");
-            _agent.SetDestination(target);
+            if (_agent.isOnNavMesh)
+            {
+                DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, $"{gameObject.name} agent moving to {target}");
+                _agent.SetDestination(target);
+            }
         }
     }
 }

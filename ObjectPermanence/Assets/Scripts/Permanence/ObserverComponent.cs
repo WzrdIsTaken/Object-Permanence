@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace ObjectPermanence
@@ -15,96 +15,36 @@ namespace ObjectPermanence
      */
     public class ObserverComponent : MonoBehaviour
     {
-        public struct PermanenceObject
-        {
-            public PermanenceComponent PermanenceComponent;
-            public Renderer RendererComponent;
-        }
+        public static event Action<ObserverComponent> ObserverCreated;
+        public static event Action<ObserverComponent> ObserverDestroyed;
 
         [SerializeField] private Camera _observerCamera;
         [SerializeField] private float _boundsInsideCheckExpansionAmount;
-        private List<PermanenceObject> _permanenceObjects;
 
         public ObserverComponent()
         {
             _observerCamera = null;
-            _permanenceObjects = new List<PermanenceObject>();
-            _boundsInsideCheckExpansionAmount = 0.75f; 
+            _boundsInsideCheckExpansionAmount = 0.75f;       
         }
 
-        private void Awake()
+        private void OnEnable()
         {
-            PermanenceComponent.PermanenceObjectCreated += OnPermanenceObjectCreated;
-            PermanenceComponent.PermanenceObjectDestroyed += OnPermanenceObjectDestroyed;
+            ObserverCreated?.Invoke(this);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            PermanenceComponent.PermanenceObjectCreated -= OnPermanenceObjectCreated;
-            PermanenceComponent.PermanenceObjectDestroyed -= OnPermanenceObjectDestroyed;
+            ObserverDestroyed?.Invoke(this);
         }
 
-        private void Update()
+        public Camera GetCamera()
         {
-            CheckIfPermanenceObjectsAreVisible();
+            return _observerCamera;
         }
 
-        private void CheckIfPermanenceObjectsAreVisible()
+        public float GetBoundsExpansion()
         {
-            Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_observerCamera);
-            foreach (PermanenceObject permanenceObject in _permanenceObjects)
-            {
-                bool visible = false;
-                bool inside = false;
-                Vector3 observerCameraPosition = _observerCamera.transform.position;
-
-                Bounds permanenceObjectBounds = permanenceObject.RendererComponent.bounds;
-                visible = GeometryUtility.TestPlanesAABB(cameraPlanes, permanenceObjectBounds);
-
-                if (visible)
-                {
-                    visible &= RaycastToObjectBoundingBoxExtents(observerCameraPosition,
-                        permanenceObjectBounds, permanenceObject.PermanenceComponent.gameObject);
-                }
-                if (visible)
-                {
-                    permanenceObjectBounds.Expand(_boundsInsideCheckExpansionAmount);
-                    inside = permanenceObjectBounds.Contains(observerCameraPosition);
-                }
-
-                var visiblilityState = (visible && !inside) ? PermanenceComponent.VisibilityState.Visible : PermanenceComponent.VisibilityState.NotVisible;
-                permanenceObject.PermanenceComponent.UpdateVisibilityState(visiblilityState);
-            }
-        }
-
-        private bool RaycastToObjectBoundingBoxExtents(Vector3 rayStart, Bounds objectBounds, GameObject objectSelf)
-        {
-            // We could iterate through all the bounds.. but this produces the desired behaviour less expensively
-
-            int exclusionLayer = ~(1 << gameObject.layer);
-            Physics.Linecast(rayStart, objectBounds.min, out RaycastHit minHit, exclusionLayer);
-            Physics.Linecast(rayStart, objectBounds.max, out RaycastHit maxHit, exclusionLayer);
-
-            if (minHit.collider && maxHit.collider)
-            {
-                if (minHit.collider.gameObject != objectSelf &&
-                    maxHit.collider.gameObject != objectSelf)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private void OnPermanenceObjectCreated(PermanenceObject permanenceObject)
-        {
-            _permanenceObjects.Add(permanenceObject);
-        }
-
-        private void OnPermanenceObjectDestroyed(PermanenceObject permanenceObject)
-        {
-            _permanenceObjects.Remove(permanenceObject);
+            return _boundsInsideCheckExpansionAmount;
         }
     }
 }
