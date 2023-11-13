@@ -9,4 +9,11 @@ namespace ObjectPermanence
         public static readonly string Ground = "Ground";
         public static readonly string Environment = "Environment";
     }
+
+    public static class InteractionLayers
+    {
+        public static readonly string Teleportation = "Teleportation";
+        public static readonly string DirectInteraction = "DirectInteraction";
+        public static readonly string RayInteraction = "RayInteraction";
+    }
 }

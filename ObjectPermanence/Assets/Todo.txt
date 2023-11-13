@@ -22,29 +22,55 @@ Tasks:
 - Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
 	- https://www.youtube.com/watch?v=yQMywArQfyY
 	- https://www.youtube.com/watch?v=YAVL6grnsiM
-	- https://www.reddit.com/r/Unity3D/comments/17lbhjp/my_simple_vr_project_runs_at_around_200fps_when/
+	- https://www.reddit.com/r/Unity3D/comments/17lbhjp/my_simple_vr_project_runs_at_around_200fps_when/ [ so far, turned off SSAO]
 
 - the wall mechanic is still slighty buggy... see if we can fix? just change the param?
 - and the boulders when you look away and they are eg mid falling off. you can also push them around while looking away?
 	- fix up these bugs. we want a polished little demo
 	- The latter can be fixed when just a change in lv design
 
+- Make sure you can pick up / place cameras ok
+
 - Add a sound effect when you turn around and see an enemy for the first time or something? :D
+
+- To make a menu for our VR game see https://youtu.be/yhB921bDLYA?list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&t=431
+
+- Got a small bug, when you are holding an object you can move it with right controller stick up/down. but this is also turn (left and right)
+	- So its easy to accidently press the wrong thing
 
 
 - https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
   at the end of the video mentioned had tutorial about a shader for the teleporation effect?
 - Fix that the hand still squeezes when teleports?
 
+- We are just disabling gravity atm to stop the character falling through the floor. Hoesntly this is ok I think. I wont have jumping anyway, 
+  and I'll just make the levels in such a way you can't fall off stuff..?
+	- Facing the same problem with slopes though. and we NEED slopes
+
+- Current bugs / todos:
+	- Fix the vr player not being able to go up slopes / gravity problems. Why is this even happening? Do some more googling idk
+		- If worst comes to worst, instead of the continous move provider can we just rewire our player move script to use other inputs?
+			- Honestly, maybe try this first
+				- If worst comes to absolute worth, just see if we can have a really shallow slope, or just have no slopes :p
+	- Add the observer component to the vr player
+	- Add the teleportation surface to the surfaces and interactable objects to the camera and cubes and stuff
+	- Make sure everything works in the little scene
+
+	- Tbh, it doesnt really matter if we never get things working as good as we want in vr, cos the stuff we will be recording
+	  will just be in the editor or a flat screen build.
+
+	- Then block out a short level.
+	- Then test that, add a little menu and see (see "To make a menu for our VR game see [link]"), then done!
+	- Write the report
+
 
 - Idk if we need it but there is a Renderer.shadowCastingMode. I think its fine, but do we need to set it on/off in ComponentUtils?
 	- If so, log / check what the default mode is... I'm guessing its just "on"
 		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
 
-- singleton constructor called twice?
-- im sure we did an init list type thing in telekensis project..
-
 Archive:
+- singleton constructor called twice? [not wo
+- im sure we did an init list type thing in telekensis project.. rth it]
 - Add in the enemy to the blockout level
 - Make the player a bit smaller xd
 - Add logic for the player 'death' / a key to reset the scene
