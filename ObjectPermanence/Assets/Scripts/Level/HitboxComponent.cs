@@ -18,7 +18,7 @@ namespace ObjectPermanence
         {
             if (other.CompareTag(Tags.PlayerTag))
             {
-                PlayerHealthComponent playerHealthComponent = other.GetComponent<PlayerHealthComponent>();
+                PlayerHealthComponent playerHealthComponent = other.GetComponent<PlayerHealthComponent>() ?? other.GetComponentInParent<PlayerHealthComponent>();
                 playerHealthComponent.TakeDamage(_damage);
             }
         }

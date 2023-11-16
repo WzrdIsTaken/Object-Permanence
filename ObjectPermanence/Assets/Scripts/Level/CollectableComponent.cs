@@ -8,14 +8,16 @@ namespace ObjectPermanence
      */
     public class CollectableComponent : MonoBehaviour
     {
+        [SerializeField] private bool _collisionCollectOverride;
+
         public CollectableComponent()
         {
+            _collisionCollectOverride = false;
         }
+
         void OnTriggerEnter(Collider other)
         {
-            // TODO comment this out when we are just using VR
-
-            if (other.CompareTag(Tags.PlayerTag))
+            if (other.CompareTag(Tags.PlayerTag) && _collisionCollectOverride)
             {
                 Collect();
             }

@@ -33,9 +33,9 @@ Tasks:
 - and the boulders when you look away and they are eg mid falling off. you can also push them around while looking away?
 	- fix up these bugs. we want a polished little demo
 	- The latter can be fixed when just a change in lv design
+	- HONESTLY is looks fine now? idk what changed but xd
 
 - Make sure you can pick up / place cameras ok
-- And pick up all the cubes in VR
 
 - Add a sound effect when you turn around and see an enemy for the first time or something? :D
 
@@ -44,6 +44,10 @@ Tasks:
 - Got a small bug, when you are holding an object you can move it with right controller stick up/down. but this is also turn (left and right)
 	- So its easy to accidently press the wrong thing
 
+- Bug: when you pick up an object, it will rotate w/ snap turn. however we can just make this look good in video etc.
+- Not urgent fix
+
+- Bug: left hand force pulls, right hand doesn't
 
 - https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
   at the end of the video mentioned had tutorial about a shader for the teleporation effect?
@@ -54,7 +58,8 @@ Tasks:
 	- Facing the same problem with slopes though. and we NEED slopes
 
 - Current bugs / todos:
-	- Add the observer component to the vr player
+	- Add the cubes collected text to back of hand? or somewhere elese in the game? idk
+
 	- Add the teleportation surface to the surfaces and interactable objects to the camera and cubes and stuff
 	- Make sure everything works in the little scene
 
@@ -71,6 +76,8 @@ Tasks:
 		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
 
 Archive:
+- Add the observer component to the vr player
+- And pick up all the cubes in VR
 - Fix the vr player not being able to go up slopes / gravity problems. Why is this even happening? Do some more googling idk
 		- If worst comes to worst, instead of the continous move provider can we just rewire our player move script to use other inputs?
 			- Honestly, maybe try this first

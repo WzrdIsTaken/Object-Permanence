@@ -48,8 +48,6 @@ namespace ObjectPermanence
                 attachTransform.SetLocalPositionAndRotation(_initialLocalPos, _initialLocalRot);
             }
 
-           
-
             base.OnSelectEntered(args);
         }
     }

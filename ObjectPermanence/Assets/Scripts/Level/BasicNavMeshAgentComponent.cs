@@ -33,10 +33,24 @@ namespace ObjectPermanence
         {
             if (!_target)
             {
-                GameObject[] players = GameObject.FindGameObjectsWithTag(Tags.PlayerTag);
+                var players1 = GameObject.FindObjectsOfType<PlayerHealthComponent>();
+                GameObject[] players = new GameObject[players1.Length];
+                for (int i = 0; i < players.Length; ++i)
+                {
+                    players[i] = players1[i].gameObject;
+                }
+
                 if (players.Length >= 1)
                 {
-                    DebugManager.Instance.Assert(players.Length == 1, AssertLevel.Assert, DebugCategory.Level, $"Found {players.Length} players");
+                    if (players.Length != 1)
+                    {
+                        DebugManager.Instance.AssertFail(AssertLevel.Assert, DebugCategory.Level, $"Found {players.Length} players.");
+                        foreach (GameObject player in players)
+                        {
+                            DebugManager.Instance.Log(LogLevel.Warning, DebugCategory.Level, $"{player.name}");
+                        }
+                    }
+                    
                     DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, $"Setting enemy target to {players[0].name}");
                     _target = players[0];
                 }
