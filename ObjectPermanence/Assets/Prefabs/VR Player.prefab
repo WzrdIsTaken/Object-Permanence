@@ -1540,7 +1540,6 @@ GameObject:
   - component: {fileID: 554662473321873647}
   - component: {fileID: 2040907489710331297}
   - component: {fileID: 7263096637110568934}
-  - component: {fileID: 8121551777833308015}
   - component: {fileID: 8442136704051429538}
   m_Layer: 6
   m_Name: VR Player
@@ -1587,13 +1586,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
+  m_Height: 4.5
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.08, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3342402126796674882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,7 +1608,7 @@ MonoBehaviour:
   m_Camera: {fileID: 5684252957515031253}
   m_OriginBaseGameObject: {fileID: 2697898133193139057}
   m_CameraFloorOffsetObject: {fileID: 8828108335484361837}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
 --- !u!114 &1507235960341221975
 MonoBehaviour:
@@ -1652,10 +1651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 8270096427108008511}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 5
   m_EnableStrafe: 1
   m_EnableFly: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_GravityApplicationMode: 1
   m_ForwardSource: {fileID: 9211790570038825516}
   m_LeftHandMoveAction:
@@ -1769,14 +1768,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2697898133193139057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_LocomotionProvider: {fileID: 8507547732950733545}
-  m_MinHeight: 0
-  m_MaxHeight: Infinity
+  m_MinHeight: 6
+  m_MaxHeight: 6
 --- !u!114 &2040907489710331297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,24 +1832,6 @@ MonoBehaviour:
         m_Flags: 0
       m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     RayInteractor: {fileID: 4418393042282461621}
---- !u!114 &8121551777833308015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697898133193139057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95a0c2ef422cd9c4aa9004474b40bba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveProvider: {fileID: 8507547732950733545}
-  _groundCheck: {fileID: 6622855545310375595}
-  _groundDistance: 0.25
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &8442136704051429538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3370,6 +3351,7 @@ GameObject:
   - component: {fileID: 283685287325027431}
   - component: {fileID: 5878488205988242957}
   - component: {fileID: 5404450926674147848}
+  - component: {fileID: 787919880488493954}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3658,6 +3640,20 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &787919880488493954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3109922644270505366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda22f64909e59a49a4e7170ec2232d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _observerCamera: {fileID: 5684252957515031253}
+  _boundsInsideCheckExpansionAmount: 0.75
 --- !u!1 &3124372907715451706
 GameObject:
   m_ObjectHideFlags: 0

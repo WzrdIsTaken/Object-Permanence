@@ -6,6 +6,11 @@ Notes:
 		- see the description i left in permanencecomponent
 	- component is not a dynamic object , so have to use reflection
 
+- IF the vr headset look movement randomly starts inverting for some reason, go to the XR Origin gameobject in the test vr scene
+  and copy the "TrackedPoseDriver" component on the its camera. Paste these values onto the vr player
+- IF we want to teleport, then we have to have the CharacterControllerDriver component on our gameobject. But that causes other issues. 
+  So perhaps just no tp? It might break the game in other ways anyway..?
+
 Resources:
 * Assets
 - Blockout textures: https://kenney.itch.io/
@@ -30,6 +35,7 @@ Tasks:
 	- The latter can be fixed when just a change in lv design
 
 - Make sure you can pick up / place cameras ok
+- And pick up all the cubes in VR
 
 - Add a sound effect when you turn around and see an enemy for the first time or something? :D
 
@@ -48,10 +54,6 @@ Tasks:
 	- Facing the same problem with slopes though. and we NEED slopes
 
 - Current bugs / todos:
-	- Fix the vr player not being able to go up slopes / gravity problems. Why is this even happening? Do some more googling idk
-		- If worst comes to worst, instead of the continous move provider can we just rewire our player move script to use other inputs?
-			- Honestly, maybe try this first
-				- If worst comes to absolute worth, just see if we can have a really shallow slope, or just have no slopes :p
 	- Add the observer component to the vr player
 	- Add the teleportation surface to the surfaces and interactable objects to the camera and cubes and stuff
 	- Make sure everything works in the little scene
@@ -69,6 +71,10 @@ Tasks:
 		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
 
 Archive:
+- Fix the vr player not being able to go up slopes / gravity problems. Why is this even happening? Do some more googling idk
+		- If worst comes to worst, instead of the continous move provider can we just rewire our player move script to use other inputs?
+			- Honestly, maybe try this first
+				- If worst comes to absolute worth, just see if we can have a really shallow slope, or just have no slopes :p
 - singleton constructor called twice? [not wo
 - im sure we did an init list type thing in telekensis project.. rth it]
 - Add in the enemy to the blockout level

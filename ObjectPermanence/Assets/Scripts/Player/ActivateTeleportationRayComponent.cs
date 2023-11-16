@@ -17,19 +17,24 @@ namespace ObjectPermanence
             public XRRayInteractor RayInteractor;
         }
 
+        [SerializeField] bool _use;
         [SerializeField] RayInfo _rightRay;
         [SerializeField] RayInfo _leftRay;
 
         public ActivateTeleportationRayComponent()
         {
+            _use = false;
             _rightRay = default;
             _leftRay = default;
         }
 
         private void Update()
         {
-            CheckAndToggleRay(_rightRay);
-            CheckAndToggleRay(_leftRay);
+            if (_use)
+            {
+                CheckAndToggleRay(_rightRay);
+                CheckAndToggleRay(_leftRay);
+            }
         }
 
         private void CheckAndToggleRay(RayInfo ray)

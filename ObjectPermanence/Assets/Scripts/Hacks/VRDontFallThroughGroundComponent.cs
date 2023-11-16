@@ -5,6 +5,7 @@ namespace ObjectPermanence
 {
     /**
      * im just there is just one checkbox im missing or something
+     * edit - found it....
      */
     public class VRDontFallThroughGroundComponent : MonoBehaviour
     {

@@ -31,6 +31,17 @@ namespace ObjectPermanence
 
         private void Start()
         {
+            if (!_target)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag(Tags.PlayerTag);
+                if (players.Length >= 1)
+                {
+                    DebugManager.Instance.Assert(players.Length == 1, AssertLevel.Assert, DebugCategory.Level, $"Found {players.Length} players");
+                    DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Level, $"Setting enemy target to {players[0].name}");
+                    _target = players[0];
+                }
+            }
+
             _startPosition = transform.position;
             _started = true;
 
