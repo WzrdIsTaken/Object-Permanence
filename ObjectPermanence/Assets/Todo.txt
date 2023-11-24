@@ -6,6 +6,8 @@ Notes:
 		- see the description i left in permanencecomponent
 	- component is not a dynamic object , so have to use reflection
 
+- Example mechanic we can write about in the report: mirrored ball like Jason made
+
 - IF the vr headset look movement randomly starts inverting for some reason, go to the XR Origin gameobject in the test vr scene
   and copy the "TrackedPoseDriver" component on the its camera. Paste these values onto the vr player
 - IF we want to teleport, then we have to have the CharacterControllerDriver component on our gameobject. But that causes other issues. 
@@ -21,9 +23,28 @@ Resources:
 
 Tasks:
 * Long Term:
-- Mechanic idea: Have mirrors/cameras which 'see' items so they don't deactivate. Could also be a mirrored ball or something the player holds?
+- 
 
 * General:
+- Remember: 2 more weeks for this work! Can do bits and pieces after.. but its really about the report (thats worth 20%) and having an xmas break... :p
+	- W/C 27th - VR stuff
+	- W/C 4th - Final polish then ask lecturers if proj is good enough for a 1st
+
+- Add a nicer skybox?
+- Perhaps a pillar or something you need to place the cube on? Some sort of text telling you how to restart
+- Make the mirror camera higher quality?
+- Do we need the entity cramming stuff in this proj?
+
+- I think some sound fx (eg for the enable/disable of the buttons & up/down of the moving platform) would go a really long way with helping the player understand the game
+- Maybe a siple door shut / fade animation instead of it just appearing?
+- Have a little vr settings page in the start area?
+- Have some debug commands to quickly warp to the different areas?
+
+- Move the camera so the player has to move it
+- The smaller red wall in the maze might have a small bug. Is it just because the mesh is accidentally a little too large or something?
+
+- Make sure the 'thanks for playing' stuff tells the player how to restart
+
 - Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
 	- https://www.youtube.com/watch?v=yQMywArQfyY
 	- https://www.youtube.com/watch?v=YAVL6grnsiM
@@ -76,6 +97,7 @@ Tasks:
 		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
 
 Archive:
+- Mechanic idea: Have mirrors/cameras which 'see' items so they don't deactivate. Could also be a mirrored ball or something the player holds?
 - Add the observer component to the vr player
 - And pick up all the cubes in VR
 - Fix the vr player not being able to go up slopes / gravity problems. Why is this even happening? Do some more googling idk
