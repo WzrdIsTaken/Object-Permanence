@@ -11092,6 +11092,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 550529749}
     m_Modifications:
+    - target: {fileID: 1162224031698245051, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2411496033977044159, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
       propertyPath: _updateNavigationFrequency
       value: 0.5
@@ -14084,6 +14088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 550529749}
     m_Modifications:
+    - target: {fileID: 1162224031698245051, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2411496033977044159, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
       propertyPath: _updateNavigationFrequency
       value: 0.5
@@ -25055,6 +25063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 550529749}
     m_Modifications:
+    - target: {fileID: 1162224031698245051, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2411496033977044159, guid: 13ef23e42cd30c6439b20f4de06cd981, type: 3}
       propertyPath: _updateNavigationFrequency
       value: 0.5
