@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -5,124 +7,264 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace ObjectPermanence
 {
     /**
-     * When player is holding an item, we don't want to rotate as well
+     * When player is holding an item, we don't want the player to rotate as well
      */
     public class VRStopMovementRotationWhenHoldingItem : MonoBehaviour
     {
-        // its kinda nice writing bot code
-
-        [SerializeField] SnapTurnProviderBase snapTurn;
-        [SerializeField] ContinuousTurnProviderBase contTurn;
-        [SerializeField] InputActionProperty _override;
-        [SerializeField] InputActionProperty _override2;
-        [SerializeField] XRRayInteractor rightDirectGrab;
-        [SerializeField] XRRayInteractor leftDirectGrab;
-
-        private float startRotateSpeed;
-
-        private void Start()
+        [System.Serializable]
+        struct ControllerInfo
         {
-            startRotateSpeed = contTurn.turnSpeed;
+            public InputActionProperty OverrideButton;
+            public XRRayInteractor RayInteractor;
+
+            public InputActionProperty SelectButton; // because now the events dont work??
+            [HideInInspector] public bool HoldingItem;
+            [HideInInspector] public GameObject HeldItem;
+            [HideInInspector] public Quaternion HeldItemRot;
+
+            public bool IsHoldingItem() => HoldingItem; //RayInteractor.interactablesSelected.Count > 0; I can't seem to use this? Have to do the event stuff instead
+            public bool IsOverrideButtonPressed() => OverrideButton.action.IsPressed();
+            public bool IsSelectButtonPressed() => SelectButton.action.IsPressed();
         }
 
-        private void Update()
-        {
-            bool check = true;
-            bool holdingRight = rightDirectGrab.interactablesSelected.Count > 0;
-            bool holdingLeft = leftDirectGrab.interactablesSelected.Count > 0;
+        [Header("Movement Providers")]
+        [SerializeField] SnapTurnProviderBase _snapTurnProvider;
+        [SerializeField] ContinuousTurnProviderBase _continuousTurnProvider;
+        [SerializeField] TeleportationProvider _teleportationProvider;
+        [SerializeField] ContinuousMoveProviderBase _continousMoveProvider;
 
-            if (holdingRight || holdingLeft)
-            {
-                if (_override.action.IsPressed() || _override2.action.IsPressed())
-                {
-                    snapTurn.enableTurnLeftRight = false;
-                    snapTurn.enableTurnAround = false;
-                    contTurn.turnSpeed = 0.0f;
-                    check = false;
-                }
-                else
-                {
-                    //Freeze(leftDirectGrab, RigidbodyConstraints.FreezeRotation);
-                    //Freeze(rightDirectGrab, RigidbodyConstraints.FreezeRotation);
-                }
-            }
-            
-            if (check)
-            {
-                snapTurn.enableTurnLeftRight = true;
-                snapTurn.enableTurnAround = true;
-                contTurn.turnSpeed = startRotateSpeed;
+        bool _snapTurnProviderDefaultState;
+        bool _continuousTurnDefaultState;
+        float _continousTurnDefaultTurnSpeed;
+        bool _teleportationProviderDefaultState;
+        bool _continousMoveProviderDefaultState;
+        float _teleportationProviderDefaultDelay;
+        float _continousMoveProviderDefaultSpeed;
 
-                //Freeze(leftDirectGrab, RigidbodyConstraints.None);
-                //Freeze(rightDirectGrab, RigidbodyConstraints.None);
-            }
-        }
+        bool turnComponentsDisabled = false;
+        bool moveComponentsDisabled = false;
 
-        private void Freeze(XRRayInteractor grab, RigidbodyConstraints con)
-        {
-            // hoesntly its fine
-            // will make note 
-            // can fix if want
-            return;
-            
-            /*
-            foreach (var v in grab.interactablesSelected)
-            {
-                Rigidbody r = v.transform.gameObject.GetComponent<Rigidbody>() ?? v.transform.gameObject.GetComponentInParent<Rigidbody>();
-                if (r)
-                {
-                    r.constraints = con;
-                }
-            }
-            */
-        }
+        [Header("Controllers")]
+        [SerializeField] ControllerInfo _leftController;
+        [SerializeField] ControllerInfo _rightController;
 
-        /*
-        [SerializeField] private InputActionProperty _toggleOffAction;
-        [SerializeField] private ContinuousTurnProviderBase _continuousMoveProvider;
-        [SerializeField] private SnapTurnProviderBase _snapTurnMoveProvider;
-
-        private bool _continiousTurnProviderDefaultState;
-        private bool _snapTurnProviderDefaultState;
-        private bool _off;
-
-        public VRStopMovementRotationWhenHoldingItem()
-        {
-            _toggleOffAction = default;
-            _continuousMoveProvider = null;
-            _snapTurnMoveProvider = null;
-
-            _continiousTurnProviderDefaultState = false;
-            _snapTurnProviderDefaultState = false;
-            _off = false;
-        }
+        // --- Main Loop ---
 
         void Start()
         {
-            RefreshComponentDefaultState();
+            SetProviderDefaultStates();
         }
 
         void Update()
         {
-            if (!_off && _toggleOffAction.action.ReadValue<float>() > 0.75f)
+            ToggleOffHoldingState(_leftController);
+            ToggleMovementProviders(_leftController);
+
+            ToggleOffHoldingState(_rightController);
+            ToggleMovementProviders(_rightController);
+        }
+
+        void LateUpdate()
+        {
+            if (_leftController.IsHoldingItem() && !_leftController.IsOverrideButtonPressed())
             {
-                _continuousMoveProvider.enabled = false;
-                _snapTurnMoveProvider.enabled = false;
-                _off = true;
+                _leftController.HeldItem.transform.rotation = _leftController.HeldItemRot;
             }
-            else if (_off)
+            if (_rightController.IsHoldingItem() && !_rightController.IsOverrideButtonPressed())
             {
-                _continuousMoveProvider.enabled = _continiousTurnProviderDefaultState;
-                _snapTurnMoveProvider.enabled = _snapTurnProviderDefaultState;
-                _off = false;
+                _rightController.HeldItem.transform.rotation = _rightController.HeldItemRot;
             }
         }
 
-        public void RefreshComponentDefaultState()
+        void ToggleMovementProviders(ControllerInfo controllerInfo)
         {
-            _continiousTurnProviderDefaultState = _continuousMoveProvider.enabled;
-            _snapTurnProviderDefaultState = _snapTurnMoveProvider.enabled;
+            bool holdingItem = controllerInfo.IsHoldingItem();
+            bool overrideButtonPressed = controllerInfo.IsOverrideButtonPressed();
+
+            if (holdingItem && overrideButtonPressed)
+            {
+                if (controllerInfo.RayInteractor == _rightController.RayInteractor)
+                {
+                    ToggleTurnComponentStates(false);
+                }
+                if (controllerInfo.RayInteractor == _leftController.RayInteractor)
+                {
+                    ToggleMoveComponentsStates(false);
+                }
+                
+                return;
+            }
+            else
+            {
+                if (controllerInfo.RayInteractor == _rightController.RayInteractor)
+                {
+                    ToggleTurnComponentStates(true);
+                }
+                if (controllerInfo.RayInteractor == _leftController.RayInteractor)
+                {
+                    ToggleMoveComponentsStates(true);
+                }
+            }
+
+            //ToggleHeldItem(controllerInfo, overrideButtonPressed);
         }
-        */
+
+        void ToggleOffHoldingState(ControllerInfo controllerInfo)
+        {
+            if (controllerInfo.IsHoldingItem())
+            {
+                if (!controllerInfo.IsSelectButtonPressed())
+                {
+                    ToggleRayInteractorHoldingItemStates(controllerInfo.RayInteractor, false);
+                }
+            }
+        }
+
+        // --- Events ---
+
+        public void OnRayInteractorSelected(XRRayInteractor rayInteractor) 
+        {
+            ToggleRayInteractorHoldingItemStates(rayInteractor, true);
+        }
+
+        public void OnRayInteractorDeselected(XRRayInteractor rayInteractor)
+        {
+            // This event doesn't seem to work??
+            //ToggleRayInteractorHoldingItemStates(rayInteractor, false);
+        }
+
+        private void ToggleRayInteractorHoldingItemStates(XRRayInteractor rayInteractor, bool state)
+        {
+            if (rayInteractor == _leftController.RayInteractor) 
+            {
+                _leftController.HoldingItem = state;
+                DebugManager.Instance.Log(LogLevel.Info, DebugCategory.VR, $"Left ray interactor holding state {state}");
+
+                if (!state)
+                {
+                    _leftController.HeldItem = null;
+                }
+                else
+                {
+                    SetHeldItem(ref _leftController);
+                }
+            }
+            if (rayInteractor == _rightController.RayInteractor) 
+            {
+                _rightController.HoldingItem = state;
+                DebugManager.Instance.Log(LogLevel.Info, DebugCategory.VR, $"Right ray interactor holding state {state}");
+
+                if (!state)
+                {
+                    _rightController.HeldItem = null;
+                }
+                else
+                {
+                    SetHeldItem(ref _rightController);
+                }
+            }
+        }
+
+        // --- Helper Funcs ---
+
+        public void SetProviderDefaultStates()
+        {
+            // Will need to call this in settings update
+            _snapTurnProviderDefaultState = _snapTurnProvider.enabled;
+            _continuousTurnDefaultState = _continuousTurnProvider.enabled;
+            _continousTurnDefaultTurnSpeed = _continuousTurnProvider.turnSpeed;
+
+            _teleportationProviderDefaultState = _teleportationProvider.enabled;
+            _teleportationProviderDefaultDelay = _teleportationProvider.delayTime;
+            _continousMoveProviderDefaultState = _continousMoveProvider.enabled;
+            _continousMoveProviderDefaultSpeed = _continousMoveProvider.moveSpeed;
+        }
+
+        void ToggleMoveComponentsStates(bool state)
+        {
+            if (state)
+            {
+                if (!moveComponentsDisabled)
+                {
+                    if (_teleportationProviderDefaultState)
+                    {
+                        _teleportationProvider.delayTime = _teleportationProviderDefaultDelay;
+                    }
+                    if (_continousMoveProviderDefaultState)
+                    {
+                        _continousMoveProvider.moveSpeed = _continousMoveProviderDefaultSpeed;
+                    }
+                }
+            }
+            else
+            {
+                if (moveComponentsDisabled)
+                {
+                    _teleportationProvider.delayTime = float.PositiveInfinity;
+                    _continousMoveProvider.moveSpeed = 0.0f;
+                }
+            }
+
+            moveComponentsDisabled = state;
+        }
+
+        void ToggleTurnComponentStates(bool state)
+        {
+            if (state)
+            {
+                if (!turnComponentsDisabled)
+                {
+                    if (_snapTurnProviderDefaultState)
+                    {
+                        _snapTurnProvider.enableTurnLeftRight = true;
+                        _snapTurnProvider.enableTurnAround = true;
+                    }
+                    if (_continuousTurnDefaultState)
+                    {
+                        _continuousTurnProvider.turnSpeed = _continousTurnDefaultTurnSpeed;
+                    }
+                }
+            }
+            else
+            {
+                if (turnComponentsDisabled)
+                {
+                    _snapTurnProvider.enableTurnLeftRight = false;
+                    _snapTurnProvider.enableTurnAround = false;
+                    _continuousTurnProvider.turnSpeed = 0.0f;
+                }
+            }
+
+            turnComponentsDisabled = state;
+        }
+
+        void SetHeldItem(ref ControllerInfo controllerInfo)
+        {
+            List<GameObject> nearbyValidItems = GameObject.FindGameObjectsWithTag(Tags.CollectableTag).ToList();
+            nearbyValidItems.AddRange(GameObject.FindGameObjectsWithTag(Tags.PickupableTag).ToList());
+
+            if (nearbyValidItems.Count > 0)
+            {
+                Vector3 playerPos = transform.position;
+                nearbyValidItems.Sort((i1, i2) =>
+                {
+                    float i1Dis = Vector3.Distance(i1.transform.position, playerPos);
+                    float i2Dis = Vector3.Distance(i2.transform.position, playerPos);
+                    return i1Dis.CompareTo(i2Dis);
+                });
+
+                controllerInfo.HeldItem = nearbyValidItems[0];
+                controllerInfo.HeldItemRot = controllerInfo.HeldItem.transform.rotation;
+                DebugManager.Instance.Log(LogLevel.Info, DebugCategory.VR, $"Setting {controllerInfo.RayInteractor.gameObject.name} held item to {controllerInfo.HeldItem.name}");
+            }
+        }
+
+        void ToggleHeldItem(ControllerInfo controllerInfo, bool state)
+        {
+            if (controllerInfo.HoldingItem)
+            {
+                controllerInfo.HeldItem.GetComponent<Rigidbody>().constraints = state ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
+            }
+        }
     }
 }

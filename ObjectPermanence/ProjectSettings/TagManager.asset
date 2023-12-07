@@ -8,6 +8,7 @@ TagManager:
   - Right Hand
   - Left Hand
   - Collectable
+  - Pickupable
   layers:
   - Default
   - TransparentFX

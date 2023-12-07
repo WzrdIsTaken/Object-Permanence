@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8995, g: 324.45413, b: 429.43256, a: 1}
+  m_IndirectSpecularColor: {r: 261.90073, g: 324.45557, b: 429.4347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1614,10 +1614,38 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 990288309}
+        m_TargetAssemblyTypeName: ObjectPermanence.VRStopMovementRotationWhenHoldingItem,
+          Assembly-CSharp
+        m_MethodName: OnRayInteractorSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 58863056}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRRayInteractor,
+            Unity.XR.Interaction.Toolkit
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 990288309}
+        m_TargetAssemblyTypeName: ObjectPermanence.VRStopMovementRotationWhenHoldingItem,
+          Assembly-CSharp
+        m_MethodName: OnRayInteractorDeselected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 58863056}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRRayInteractor,
+            Unity.XR.Interaction.Toolkit
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -3240,6 +3268,10 @@ PrefabInstance:
     - target: {fileID: 6093967156461838343, guid: 487442f0242292240aaef89f254fda00, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093967156461838343, guid: 487442f0242292240aaef89f254fda00, type: 3}
+      propertyPath: m_TagString
+      value: Pickupable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8764,10 +8796,38 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 990288309}
+        m_TargetAssemblyTypeName: ObjectPermanence.VRStopMovementRotationWhenHoldingItem,
+          Assembly-CSharp
+        m_MethodName: OnRayInteractorSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 462070418}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRRayInteractor,
+            Unity.XR.Interaction.Toolkit
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 990288309}
+        m_TargetAssemblyTypeName: ObjectPermanence.VRStopMovementRotationWhenHoldingItem,
+          Assembly-CSharp
+        m_MethodName: OnRayInteractorDeselected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 462070418}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRRayInteractor,
+            Unity.XR.Interaction.Toolkit
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -18659,34 +18719,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8676739d7e89b4a8ab967ea03bfadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapTurn: {fileID: 990288313}
-  contTurn: {fileID: 990288314}
-  _override:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Override
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: d0fd51a4-31b6-4b78-8d47-aada9a307040
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _override2:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Override 2
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 26902a1a-b7b3-4f4c-bd78-e56ab64d3e95
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  rightDirectGrab: {fileID: 58863056}
-  leftDirectGrab: {fileID: 462070418}
+  _snapTurnProvider: {fileID: 990288313}
+  _continuousTurnProvider: {fileID: 990288314}
+  _teleportationProvider: {fileID: 990288312}
+  _continousMoveProvider: {fileID: 990288315}
+  _leftController:
+    OverrideButton:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Override Button
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: fde0a31f-d76b-4593-8c3c-09eb7578de52
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+      m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    RayInteractor: {fileID: 462070418}
+    SelectButton:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Select Button
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 2fccf4a3-2657-4646-9f76-3512cd71ce50
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+      m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    HoldingItem: 0
+    HeldItem: {fileID: 0}
+  _rightController:
+    OverrideButton:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Override Button
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 7e776b96-bcdd-4519-86a0-aef4a40f1d56
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+      m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    RayInteractor: {fileID: 58863056}
+    SelectButton:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Select Button
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: d128ce86-c981-4330-a68a-b47d034d31dc
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+      m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    HoldingItem: 0
+    HeldItem: {fileID: 0}
 --- !u!114 &990288310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18962,7 +19054,7 @@ Transform:
   m_GameObject: {fileID: 990288308}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.297, y: 10, z: 75}
+  m_LocalPosition: {x: -8.297, y: 10, z: 79.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
