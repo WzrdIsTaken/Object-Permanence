@@ -7,6 +7,7 @@ Notes:
 	- component is not a dynamic object , so have to use reflection
 
 - Example mechanic we can write about in the report: mirrored ball like Jason made
+- Write about more sfx to make the game more like a horror one. Eg sfx when you turn around and see an enemy for the first time
 
 - IF the vr headset look movement randomly starts inverting for some reason, go to the XR Origin gameobject in the test vr scene
   and copy the "TrackedPoseDriver" component on the its camera. Paste these values onto the vr player

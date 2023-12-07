@@ -50,6 +50,10 @@ namespace ObjectPermanence
                 collectableTrackerComponent.Collect();
             }
 
+            GetComponent<BobComponent>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = true;
+            transform.parent = null;
+
             if (_fadeOutAfterCollect)
             {
                 StartCoroutine(FadeOut());

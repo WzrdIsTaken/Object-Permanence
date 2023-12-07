@@ -58,10 +58,10 @@ namespace ObjectPermanence
         void Update()
         {
             ToggleOffHoldingState(_leftController);
-            ToggleMovementProviders(_leftController);
+            ToggleMovementProviders(ref _leftController);
 
             ToggleOffHoldingState(_rightController);
-            ToggleMovementProviders(_rightController);
+            ToggleMovementProviders(ref _rightController);
         }
 
         void LateUpdate()
@@ -76,7 +76,7 @@ namespace ObjectPermanence
             }
         }
 
-        void ToggleMovementProviders(ControllerInfo controllerInfo)
+        void ToggleMovementProviders(ref ControllerInfo controllerInfo)
         {
             bool holdingItem = controllerInfo.IsHoldingItem();
             bool overrideButtonPressed = controllerInfo.IsOverrideButtonPressed();
@@ -106,6 +106,10 @@ namespace ObjectPermanence
                 }
             }
 
+            if (overrideButtonPressed && holdingItem)
+            {
+                controllerInfo.HeldItemRot = controllerInfo.HeldItem.transform.rotation;
+            }
             //ToggleHeldItem(controllerInfo, overrideButtonPressed);
         }
 

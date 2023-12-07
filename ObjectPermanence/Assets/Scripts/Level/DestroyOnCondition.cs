@@ -7,6 +7,7 @@ namespace ObjectPermanence
      */
     public class DestroyOnCondition : MonoBehaviour
     {
+        [System.Flags]
         private enum DestroyCondition
         {
             YAxisLimit
@@ -38,8 +39,14 @@ namespace ObjectPermanence
 
         private void DestroyObject()
         {
-            // Pulled this logic out in case we ever want to do anything special...
-            Destroy(gameObject);
+            if (gameObject.CompareTag(Tags.PlayerTag))
+            {
+                GetComponent<PlayerHealthComponent>().TakeDamage(int.MaxValue);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
