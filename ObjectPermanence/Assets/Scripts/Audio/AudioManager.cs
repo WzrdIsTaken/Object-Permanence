@@ -74,6 +74,8 @@ namespace ObjectPermanence
 
             if (mixer && effect && voice)
             {
+                DebugManager.Instance.Log(LogLevel.Info, DebugCategory.Audio, $"Playing audio effect {audioID}");
+
                 SetAudioVoiceForEffect(voice, mixer, effect, playSettings);
                 voice.Play();
             }
