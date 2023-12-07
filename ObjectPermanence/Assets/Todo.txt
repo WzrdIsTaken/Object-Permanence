@@ -38,7 +38,7 @@ Tasks:
 
 - I think some sound fx (eg for the enable/disable of the buttons & up/down of the moving platform) would go a really long way with helping the player understand the game
 - Maybe a siple door shut / fade animation instead of it just appearing?
-- Have a little vr settings page in the start area?
+- Have a little vr settings page in the start area? DONE
 - Have some debug commands to quickly warp to the different areas?
 
 - Move the camera so the player has to move it
