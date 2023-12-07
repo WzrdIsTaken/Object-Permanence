@@ -42,6 +42,7 @@ namespace ObjectPermanence
         private Dictionary<AudioMixerID, AudioMixerGroup> _audioMixers;
         private Dictionary<AudioID, AudioEffect> _audioEffects;
         private AudioSource[] _voicePool;
+        private bool _dontAssertForDemoHack = true; // audio effects may try to play before the manager has init'ed. this solves that
 
         private const string _audioEffectsResourcePath = "Audio/Effects";
         private const string _musicMixerName = "Music";
@@ -64,6 +65,8 @@ namespace ObjectPermanence
             InitAudioMixers(_musicMixerName, _sfxMixerName);
             InitVoicePool(_voicePoolSize);
             InitAudioEffects(_audioEffectsResourcePath);
+
+            Invoke(nameof(SetDontAssertForDemoHack), 0.5f);
         }
 
         public AudioSource PlayEffect(AudioID audioID, AudioMixerID mixerID, AudioPlaySettings playSettings, AudioSource existingSource = null)
@@ -180,6 +183,8 @@ namespace ObjectPermanence
 
         private AudioSource GetAvailableVoice()
         {
+            if (_dontAssertForDemoHack) return null;
+
             AudioSource voice = null;
             voice = _voicePool.Where(v => !v.isPlaying).FirstOrDefault();
 
@@ -237,6 +242,11 @@ namespace ObjectPermanence
             }
 
             return idType;
+        }
+
+        private void SetDontAssertForDemoHack()
+        {
+            _dontAssertForDemoHack = false;
         }
     }
 }

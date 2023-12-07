@@ -7,7 +7,8 @@ namespace ObjectPermanence
     {
         Reset,
         Test,
-        // Any other audio effects here!
+        ButtonOn,
+        ButtonOff,
 
         None
     }

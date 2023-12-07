@@ -16,6 +16,7 @@ namespace ObjectPermanence
         void OnEnable()
         {
             GetComponent<MeshRenderer>().material = _enabledMat;
+            PlayEffect(AudioID.ButtonOn);
 
             if (!_otherBehaviour)
             {
@@ -30,6 +31,7 @@ namespace ObjectPermanence
         void OnDisable()
         {
             GetComponent<MeshRenderer>().material = _disabledMat;
+            PlayEffect(AudioID.ButtonOff);
 
             if (!_otherBehaviour)
             {
@@ -44,6 +46,16 @@ namespace ObjectPermanence
         void Update()
         {
             if (!_otherBehaviour && _door) _door.SetActive(_enabledCount != 2);
+        }
+
+        void PlayEffect(AudioID effect)
+        {
+            Transform p = GameObject.FindGameObjectWithTag(Tags.PlayerTag).transform;
+            if (!p) return;
+            if (Vector3.Distance(transform.position, p.position) < 5) return;
+            var s = AudioPlaySettings.Default;
+            s.Position = transform.position;
+            AudioManager.Instance.PlayEffect(effect, AudioMixerID.SFX, s);
         }
     }
 }

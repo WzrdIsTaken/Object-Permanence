@@ -14,6 +14,8 @@ Notes:
 - IF we want to teleport, then we have to have the CharacterControllerDriver component on our gameobject. But that causes other issues. 
   So perhaps just no tp? It might break the game in other ways anyway..?
 
+- Player start location is: -24.88,3.5,-6.72
+
 Resources:
 * Assets
 - Blockout textures: https://kenney.itch.io/
@@ -34,22 +36,9 @@ Tasks:
 - Add a nicer skybox?
 - Perhaps a pillar or something you need to place the cube on? Some sort of text telling you how to restart
 - Make the mirror camera higher quality?
-- Do we need the entity cramming stuff in this proj?
-
-- I think some sound fx (eg for the enable/disable of the buttons & up/down of the moving platform) would go a really long way with helping the player understand the game
-- Maybe a siple door shut / fade animation instead of it just appearing?
-- Have a little vr settings page in the start area? DONE
-- Have some debug commands to quickly warp to the different areas?
-
-- Move the camera so the player has to move it
-- The smaller red wall in the maze might have a small bug. Is it just because the mesh is accidentally a little too large or something?
 
 - Make sure the 'thanks for playing' stuff tells the player how to restart
-
-- Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
-	- https://www.youtube.com/watch?v=yQMywArQfyY
-	- https://www.youtube.com/watch?v=YAVL6grnsiM
-	- https://www.reddit.com/r/Unity3D/comments/17lbhjp/my_simple_vr_project_runs_at_around_200fps_when/ [ so far, turned off SSAO]
+- The smaller red wall in the maze might have a small bug. Is it just because the mesh is accidentally a little too large or something?
 
 - the wall mechanic is still slighty buggy... see if we can fix? just change the param?
 - and the boulders when you look away and they are eg mid falling off. you can also push them around while looking away?
@@ -57,28 +46,22 @@ Tasks:
 	- The latter can be fixed when just a change in lv design
 	- HONESTLY is looks fine now? idk what changed but xd
 
+Archive:
+- Do we need the entity cramming stuff in this proj? Nah probs not its tiny
+- Move the camera so the player has to move it
+- Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
+	- https://www.youtube.com/watch?v=yQMywArQfyY
+	- https://www.youtube.com/watch?v=YAVL6grnsiM
+	- https://www.reddit.com/r/Unity3D/comments/17lbhjp/my_simple_vr_project_runs_at_around_200fps_when/ [ so far, turned off SSAO]
 - Make sure you can pick up / place cameras ok
-
 - Add a sound effect when you turn around and see an enemy for the first time or something? :D
-
 - To make a menu for our VR game see https://youtu.be/yhB921bDLYA?list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&t=431
-
-- Got a small bug, when you are holding an object you can move it with right controller stick up/down. but this is also turn (left and right)
-	- So its easy to accidently press the wrong thing
-
-- Bug: when you pick up an object, it will rotate w/ snap turn. however we can just make this look good in video etc.
-- Not urgent fix
-
-- Bug: left hand force pulls, right hand doesn't
-
-- https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
-  at the end of the video mentioned had tutorial about a shader for the teleporation effect?
-- Fix that the hand still squeezes when teleports?
-
 - We are just disabling gravity atm to stop the character falling through the floor. Hoesntly this is ok I think. I wont have jumping anyway, 
   and I'll just make the levels in such a way you can't fall off stuff..?
 	- Facing the same problem with slopes though. and we NEED slopes
-
+- Idk if we need it but there is a Renderer.shadowCastingMode. I think its fine, but do we need to set it on/off in ComponentUtils?
+	- If so, log / check what the default mode is... I'm guessing its just "on"
+		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
 - Current bugs / todos:
 	- Add the cubes collected text to back of hand? or somewhere elese in the game? idk
 
@@ -91,13 +74,18 @@ Tasks:
 	- Then block out a short level.
 	- Then test that, add a little menu and see (see "To make a menu for our VR game see [link]"), then done!
 	- Write the report
-
-
-- Idk if we need it but there is a Renderer.shadowCastingMode. I think its fine, but do we need to set it on/off in ComponentUtils?
-	- If so, log / check what the default mode is... I'm guessing its just "on"
-		- AH yeah, it was: can we detect if the camera can see an objects shadow, because if so it shouldnt be disabled?
-
-Archive:
+- Got a small bug, when you are holding an object you can move it with right controller stick up/down. but this is also turn (left and right)
+	- So its easy to accidently press the wrong thing
+- Bug: when you pick up an object, it will rotate w/ snap turn. however we can just make this look good in video etc.
+- Not urgent fix
+- Bug: left hand force pulls, right hand doesn't
+- https://www.youtube.com/watch?v=9pVdiBogmew&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=5
+  at the end of the video mentioned had tutorial about a shader for the teleporation effect?
+- Fix that the hand still squeezes when teleports?
+- I think some sound fx (eg for the enable/disable of the buttons & up/down of the moving platform) would go a really long way with helping the player understand the game
+- Maybe a siple door shut / fade animation instead of it just appearing?
+- Have a little vr settings page in the start area? DONE
+- Have some debug commands to quickly warp to the different areas? NAH
 - Mechanic idea: Have mirrors/cameras which 'see' items so they don't deactivate. Could also be a mirrored ball or something the player holds?
 - Add the observer component to the vr player
 - And pick up all the cubes in VR
