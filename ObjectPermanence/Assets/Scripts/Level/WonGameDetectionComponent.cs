@@ -20,14 +20,15 @@ namespace ObjectPermanence
 
                 if (debugKeyboardInput || vrInput)
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    GameObject.FindGameObjectWithTag(Tags.PlayerTag).GetComponent<PlayerHealthComponent>().TakeDamage(int.MaxValue);
                 }
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(Tags.CollectableTag))
+            if (other.CompareTag(Tags.CollectableTag) || (other.CompareTag(Tags.PlayerTag) && other.name == "Keyboard Player"))
             {
                 if (!_won)
                 {

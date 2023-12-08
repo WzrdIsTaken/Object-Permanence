@@ -50,9 +50,9 @@ namespace ObjectPermanence
 
         void PlayEffect(AudioID effect)
         {
-            Transform p = GameObject.FindGameObjectWithTag(Tags.PlayerTag).transform;
+            GameObject p = GameObject.FindGameObjectWithTag(Tags.PlayerTag);
             if (!p) return;
-            if (Vector3.Distance(transform.position, p.position) < 5) return;
+            if (Vector3.Distance(transform.position, p.transform.position) < 5) return;
             var s = AudioPlaySettings.Default;
             s.Position = transform.position;
             AudioManager.Instance.PlayEffect(effect, AudioMixerID.SFX, s);
