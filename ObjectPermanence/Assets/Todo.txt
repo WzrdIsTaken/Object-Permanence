@@ -8,6 +8,8 @@ Notes:
 
 - Example mechanic we can write about in the report: mirrored ball like Jason made
 - Write about more sfx to make the game more like a horror one. Eg sfx when you turn around and see an enemy for the first time
+- Just in general, write out sound effects are really useful. When the scene view is side by side, its easy to see whats changing. When its just the game view, this can be hard. Therefore eg button toggle on/off sfx makes this easier to understand
+	- If we want to demo this in the final video, might have to edit in the sfx? The video of the unity editor was muted. The video of the build isnt though.
 
 - IF the vr headset look movement randomly starts inverting for some reason, go to the XR Origin gameobject in the test vr scene
   and copy the "TrackedPoseDriver" component on the its camera. Paste these values onto the vr player
@@ -29,24 +31,23 @@ Tasks:
 - 
 
 * General:
+- Ask for feedback, see if there is anything else we need to do (fingers crossed not)
+- Write the report! / make the video [See notes above]
+
+Archive:
 - Remember: 2 more weeks for this work! Can do bits and pieces after.. but its really about the report (thats worth 20%) and having an xmas break... :p
 	- W/C 27th - VR stuff
 	- W/C 4th - Final polish then ask lecturers if proj is good enough for a 1st
-
 - Add a nicer skybox?
 - Perhaps a pillar or something you need to place the cube on? Some sort of text telling you how to restart
 - Make the mirror camera higher quality?
-
 - Make sure the 'thanks for playing' stuff tells the player how to restart
 - The smaller red wall in the maze might have a small bug. Is it just because the mesh is accidentally a little too large or something?
-
 - the wall mechanic is still slighty buggy... see if we can fix? just change the param?
 - and the boulders when you look away and they are eg mid falling off. you can also push them around while looking away?
 	- fix up these bugs. we want a polished little demo
 	- The latter can be fixed when just a change in lv design
 	- HONESTLY is looks fine now? idk what changed but xd
-
-Archive:
 - Do we need the entity cramming stuff in this proj? Nah probs not its tiny
 - Move the camera so the player has to move it
 - Do we want/need URP? YES, we added it, just got to follow some other steps to make it look good.
