@@ -4,4 +4,4 @@
 
 A VR demo where objects change state if you look away.
 
-You can watch a video about the project [here](https://youtu.be/n9mT7CknKcM?si=mNLkoGa1w5KH8HDx)!
+You can watch a video about the project [here](https://youtu.be/55q6rwwLAvk)!
